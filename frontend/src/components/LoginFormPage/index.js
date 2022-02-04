@@ -47,7 +47,10 @@ const LoginFormPage = () => {
           required
         />
       </label>
-      <button type='submit'>Log In</button>
+      <button type='submit'>Login</button>
+      <button type='button' onClick={() => dispatch(sessionActions.demoLogin())}>
+        Login as demo
+      </button>
     </form>
   );
 };
