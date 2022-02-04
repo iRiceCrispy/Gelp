@@ -7,7 +7,7 @@ const DropDownMenu = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <div className='profileMenu'>
+    <div className='profileMenu' onClick={e => e.stopPropagation()}>
       <p>Username: {sessionUser.username}</p>
       <p>Email: {sessionUser.email}</p>
       <button onClick={() => dispatch(logout())}>Logout</button>
@@ -24,10 +24,6 @@ const ProfileButton = () => {
     const closeMenu = () => {
       setShowMenu(false);
     };
-
-    document.querySelector('.profileMenu').addEventListener('click', e => {
-      e.stopPropagation();
-    });
 
     document.addEventListener('click', closeMenu);
 
