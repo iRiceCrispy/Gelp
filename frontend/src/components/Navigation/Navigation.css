@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+nav * {
+  list-style-type: none;
+  align-items: center;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.home {
+  vertical-align: middle;
+}
+
+.userAuth ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login {
+  margin-right: 25px;
+}

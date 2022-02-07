@@ -1,0 +1,16 @@
+.profile {
+  position: relative;
+}
+
+.profileButton {
+  background-color: transparent;
+  border: none;
+}
+
+.profileMenu {
+  border: 1px solid black;
+  position: absolute;
+  width: max-content;
+  right: 0;
+  margin-top: 10px;
+}

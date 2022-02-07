@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import './ProfileButton.css';
 
 const DropDownMenu = () => {
   const dispatch = useDispatch();
@@ -31,12 +32,12 @@ const ProfileButton = () => {
   }, [showMenu]);
 
   return (
-    <>
-      <button onClick={() => !showMenu && setShowMenu(true)}>
-        <i className='fas fa-user-circle'></i>
+    <div className='profile'>
+      <button className='profileButton' onClick={() => !showMenu && setShowMenu(true)}>
+        <i className='fas fa-user-circle fa-2x'></i>
       </button>
       {showMenu && <DropDownMenu />}
-    </>
+    </div>
   );
 };
 

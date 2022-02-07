@@ -8,25 +8,29 @@ const Navigation = () => {
 
   return (
     <nav>
-      <ul>
-        <li>
+      <div className='navBar'>
+        <div className='home'>
           <Link to='/'>Home</Link>
-        </li>
-        {sessionUser ? (
-          <li>
+        </div>
+        <div className='userAuth'>
+          {sessionUser ? (
             <ProfileButton />
-          </li>
-        ) : (
-          <>
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-            <li>
-              <Link to='/signup'>Signup</Link>
-            </li>
-          </>
-        )}
-      </ul>
+          ) : (
+            <ul>
+              <li>
+                <Link className='login' to='/login'>
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link className='logout' to='/signup'>
+                  Signup
+                </Link>
+              </li>
+            </ul>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };
