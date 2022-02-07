@@ -53,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     User.hasMany(models.Game, { foreignKey: 'ownerId' });
+    User.hasMany(models.Review, { foreignKey: 'userId' });
   };
 
   User.getCurrentUserById = async function (id) {
