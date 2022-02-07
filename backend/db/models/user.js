@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
-          len: [4, 30],
+          len: [3, 30],
           isNotEmail(value) {
             if (Validator.isEmail(value)) {
               throw new Error('Cannot be an email.');
@@ -22,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 256],
+          len: [3, 255],
         },
       },
       hashedPassword: {
@@ -51,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Game, { foreignKey: 'ownerId' });
   };
 
   User.getCurrentUserById = async function (id) {
