@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       url: DataTypes.STRING,
       steamUrl: DataTypes.STRING,
-      releaseDate: DataTypes.DATE,
+      releaseDate: DataTypes.DATEONLY,
       currentVersion: DataTypes.STRING,
     },
     {}
