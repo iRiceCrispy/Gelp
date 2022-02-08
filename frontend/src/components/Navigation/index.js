@@ -7,10 +7,13 @@ const Navigation = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <nav>
+    <nav className='nav'>
       <div className='navBar'>
         <div className='home'>
           <Link to='/'>Home</Link>
+        </div>
+        <div className='options'>
+          <Link to='/games/add'>Add Game</Link>
         </div>
         <div className='userAuth'>
           {sessionUser ? (

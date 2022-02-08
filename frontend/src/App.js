@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from './store/session';
+import Splash from './components/Splash';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
@@ -13,13 +14,17 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const sessionUser = useSelector(state => state.session.user);
-
   return (
     isLoaded && (
       <>
-        <Navigation />
-        <p>Welcome {sessionUser?.username || 'guest'}</p>
+        <Switch>
+          <Route exact path='/'>
+            <Splash />
+          </Route>
+          <Route>
+            <Navigation />
+          </Route>
+        </Switch>
         <Switch>
           <Route path='/login'>
             <LoginFormPage />
