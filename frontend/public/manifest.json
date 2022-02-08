@@ -1,6 +1,6 @@
 {
-  "short_name": "React Template",
-  "name": "Create React App Template",
+  "short_name": "Gelp",
+  "name": "Gelp - A Yelp clone, but for games",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
