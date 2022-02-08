@@ -6,7 +6,7 @@ import './GameList.css';
 
 const GameList = () => {
   const dispatch = useDispatch();
-  const games = useSelector(state => state.games);
+  const games = useSelector(state => state.games.list);
   const gameList = Object.values(games);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const GameList = () => {
   return (
     <div className='gameList'>
       {gameList.map(game => (
-        <NavLink to={`/games/${game.id}`}>
+        <NavLink key={game.id} to={`/games/${game.id}`}>
           <div className='gameContainer' key={game.id}>
             <p className='gameTitle'>{game.title}</p>
           </div>

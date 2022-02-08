@@ -30,7 +30,7 @@ router.post(
       currentVersion,
     });
 
-    return res.status(201).json({ game });
+    return res.status(201).json(game);
   })
 );
 
@@ -44,7 +44,7 @@ router.get(
       include: ['Reviews'],
     });
 
-    return res.json({ game });
+    return res.json(game);
   })
 );
 
@@ -65,7 +65,7 @@ router.put(
 
     await game.save();
 
-    return res.json({ game });
+    return res.json(game);
   })
 );
 

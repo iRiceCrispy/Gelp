@@ -6,7 +6,8 @@ import Splash from './components/Splash';
 import Navigation from './components/Navigation';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
-import AddGamePage from './components/AddGamePage';
+import GameFormPage from './components/GameFormPage';
+import GamePage from './components/GamePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,20 +23,27 @@ function App() {
           <Route exact path='/'>
             <Splash />
           </Route>
-          <Route>
-            <Navigation />
-          </Route>
-        </Switch>
-        <Switch>
           <Route path='/login'>
+            <Navigation />
             <LoginFormPage />
           </Route>
           <Route path='/signup'>
+            <Navigation />
             <SignupFormPage />
           </Route>
           <Route path='/games/add'>
-            <AddGamePage />
+            <Navigation />
+            <GameFormPage />
           </Route>
+          <Route exact path={'/games/:gameId(\\d+)'}>
+            <Navigation />
+            <GamePage />
+          </Route>
+          <Route path={'/games/:gameId(\\d+)/edit'}>
+            <Navigation />
+            <GameFormPage edit={true} />
+          </Route>
+          <Route>404 not found</Route>
         </Switch>
       </>
     )

@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame } from '../../store/games';
 
-const AddGamePage = () => {
+const GameFormPage = ({ edit }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
@@ -52,4 +52,4 @@ const AddGamePage = () => {
   );
 };
 
-export default AddGamePage;
+export default GameFormPage;
