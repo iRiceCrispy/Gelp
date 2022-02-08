@@ -1,28 +1,34 @@
 import { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addGame } from '../../store/games';
+import { addGame, editGame } from '../../store/games';
 
 const GameFormPage = ({ edit }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [url, setUrl] = useState('');
-  const [steamUrl, setSteamUrl] = useState('');
-  const [releaseDate, setReleaseDate] = useState(undefined);
+  const currentGame = useSelector(state => state.games.current);
+  const [title, setTitle] = useState(edit ? currentGame.title : '');
+  const [description, setDescription] = useState(edit ? currentGame.description : '');
+  const [url, setUrl] = useState(edit ? currentGame.url : '');
+  const [steamUrl, setSteamUrl] = useState(edit ? currentGame.steamUrl : '');
+  const [releaseDate, setReleaseDate] = useState(edit ? currentGame.releaseDate : undefined);
 
   if (!sessionUser) return <Redirect to='/login' />;
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    const game = { ownerId: sessionUser.id, title, description, url, steamUrl, releaseDate };
+    const game = { ...currentGame, title, description, url, steamUrl, releaseDate };
 
-    dispatch(addGame(game));
-
-    return history.push('/');
+    if (!edit) {
+      game.ownerId = sessionUser.id;
+      dispatch(addGame(game));
+      return history.push('/');
+    } else {
+      dispatch(editGame(game));
+      return history.push('.');
+    }
   };
 
   return (
@@ -47,7 +53,7 @@ const GameFormPage = ({ edit }) => {
         Release Date
         <input type='date' value={releaseDate} onChange={e => setReleaseDate(e.target.value)} />
       </label>
-      <button type='submit'>Add Game</button>
+      <button type='submit'>{edit ? 'Edit Game' : 'Add Game'}</button>
     </form>
   );
 };
