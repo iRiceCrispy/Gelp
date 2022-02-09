@@ -1,20 +1,20 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Game } = require('../../db/models');
+const { Game, Review } = require('../../db/models');
 
 const router = express.Router();
 
+// Get all games
 router.get(
   '/',
   asyncHandler(async (req, res) => {
-    const games = await Game.findAll({
-      order: [['updatedAt', 'DESC']],
-    });
+    const games = await Game.findAll();
 
     return res.json(games);
   })
 );
 
+// Create a new game
 router.post(
   '/',
   asyncHandler(async (req, res) => {
@@ -34,6 +34,7 @@ router.post(
   })
 );
 
+// Get a single game
 router.get(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
@@ -48,6 +49,7 @@ router.get(
   })
 );
 
+// Edit a game
 router.put(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
@@ -70,6 +72,7 @@ router.put(
   })
 );
 
+// Delete a game
 router.delete(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
@@ -80,6 +83,24 @@ router.delete(
     await game.destroy();
 
     return res.json({ message: `Deleted game ${game.id}` });
+  })
+);
+
+// Add a review for a game
+router.post(
+  '/:gameId(\\d+)/reviews',
+  asyncHandler(async (req, res) => {
+    const gameId = parseInt(req.params.gameId);
+    const { userId, body, rating } = req.body;
+
+    const review = await Review.create({
+      userId,
+      gameId,
+      body,
+      rating,
+    });
+
+    return res.status(201).json(review);
   })
 );
 
