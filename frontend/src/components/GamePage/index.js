@@ -9,6 +9,7 @@ const GamePage = () => {
   const history = useHistory();
   const { gameId } = useParams();
   const game = useSelector(state => state.games.current);
+  const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -32,14 +33,16 @@ const GamePage = () => {
         >
           <div className='gameHeading'>
             <h1>{game.title}</h1>
-            <div className='buttonContainer'>
-              <Link className='btn' to={`/games/${gameId}/edit`}>
-                Edit
-              </Link>
-              <button className='btn' type='button' onClick={() => removeGameEvent()}>
-                Delete
-              </button>
-            </div>
+            {sessionUser.id === game.ownerId && (
+              <div className='buttonContainer'>
+                <Link className='btn' to={`/games/${gameId}/edit`}>
+                  Edit
+                </Link>
+                <button className='btn' type='button' onClick={() => removeGameEvent()}>
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className='gameDetails'>
