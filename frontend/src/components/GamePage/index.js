@@ -33,10 +33,10 @@ const GamePage = () => {
           <div className='gameHeading'>
             <h1>{game.title}</h1>
             <div className='buttonContainer'>
-              <Link className='btn' to={`/games/${gameId}/edit`}>
+              <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
                 Edit
               </Link>
-              <button className='btn' type='button' onClick={() => removeGameEvent()}>
+              <button className='btn btnTrans' type='button' onClick={() => removeGameEvent()}>
                 Delete
               </button>
             </div>
