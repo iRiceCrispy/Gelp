@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
           len: [2],
         },
       },
+      image: DataTypes.STRING,
       url: DataTypes.STRING,
       steamUrl: DataTypes.STRING,
       releaseDate: DataTypes.DATEONLY,
-      currentVersion: DataTypes.STRING,
     },
     {}
   );

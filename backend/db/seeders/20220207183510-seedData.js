@@ -28,10 +28,20 @@ module.exports = {
           title: 'Project Zomboid',
           description:
             'Project Zomboid is the ultimate in zombie survival. Alone or in MP: you loot, build, craft, fight, farm and fish in a struggle to survive. A hardcore RPG skillset, a vast map, massively customisable sandbox and a cute tutorial raccoon await the unwary. So how will you die? All it takes is a bite...',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/108600/header.jpg?t=1639992670',
           url: 'https://projectzomboid.com/blog/',
           steamUrl: 'https://store.steampowered.com/app/108600/Project_Zomboid/',
           releaseDate: '2013-11-08',
-          currentVersion: 'Build 41',
+        },
+        {
+          ownerId: users[1].id,
+          title: 'Maplestory',
+          description:
+            'Join over 260 Million Global Players in MapleStory, one of the original MMORPGs, where epic adventure, action-packed gameplay, & good friends await you! Featuring an iconic 2D art style, MapleStory offers the thrill of explosive power, bold anime-style self-expression, and absolute control of your characters’ awesome abilities. Build your perfect custom hero from over 40 distinct classes with thousands of unique cosmetic options, and set off on your journey to face never-ending challenges and enjoy extraordinary rewards. Discover Your Story!',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/216150/header.jpg?t=1643829016',
+          url: 'https://maplestory.nexon.net/',
+          steamUrl: 'https://store.steampowered.com/app/216150/MapleStory/',
+          releaseDate: '2005-05-11',
         },
       ],
       { returning: true }

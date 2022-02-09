@@ -24,28 +24,48 @@ const GamePage = () => {
   return (
     isLoaded && (
       <div className='gamePage'>
-        <div className='gameDetails'>
-          <p>
-            Title: <span>{game.title}</span>
-          </p>
-          <p>
-            Description: <span>{game.description}</span>
-          </p>
-        </div>
-        <div>
-          <Link to={`/games/${gameId}/edit`}>Edit</Link>
-          <button type='button' onClick={() => removeGameEvent()}>
-            Delete
-          </button>
-        </div>
-        <div className='gameReviews'>
-          Reviews
-          {game.Reviews.map(review => (
-            <div key={review.id} className='review'>
-              <span>Rating: {review.rating}</span>
-              <p>{review.body}</p>
+        <div
+          className='gameImage'
+          style={{
+            backgroundImage: `url(${game.image})`,
+          }}
+        >
+          <div className='gameHeading'>
+            <h1>{game.title}</h1>
+            <div className='buttonContainer'>
+              <Link className='btn' to={`/games/${gameId}/edit`}>
+                Edit
+              </Link>
+              <button className='btn' type='button' onClick={() => removeGameEvent()}>
+                Delete
+              </button>
             </div>
-          ))}
+          </div>
+        </div>
+        <div className='gameDetails'>
+          <h2 className='about'>
+            About the game: <p>{game.description}</p>
+          </h2>
+          <div className='details'>
+            <div>
+              <a href={game.url}>Game homepage</a>
+            </div>
+            <div>
+              <a href={game.steamUrl}>Steam url</a>
+            </div>
+            <div>
+              <p>Release date: {game.releaseDate}</p>
+            </div>
+          </div>
+          <div className='gameReviews'>
+            <h2>Reviews</h2>
+            {game.Reviews.map(review => (
+              <div key={review.id} className='review'>
+                <span>Rating: {review.rating}</span>
+                <p>{review.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     )

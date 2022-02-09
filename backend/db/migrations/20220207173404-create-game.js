@@ -22,6 +22,9 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      image: {
+        type: Sequelize.STRING,
+      },
       url: {
         type: Sequelize.STRING,
       },
@@ -30,9 +33,6 @@ module.exports = {
       },
       releaseDate: {
         type: Sequelize.DATEONLY,
-      },
-      currentVersion: {
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

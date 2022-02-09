@@ -1,4 +1,86 @@
-.gameDetails {
+.gameImage {
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gameHeading {
   width: 50%;
+  height: 80%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.gameHeading h1 {
+  color: white;
+  margin: 15px;
+  padding: 15px;
+  font-size: 75px;
+  text-shadow: 0 0 10px black;
+  border-bottom: 1px solid white;
+}
+
+.buttonContainer {
+  margin-left: 0;
+  display: flex;
+  align-items: flex-start;
+  bottom: -25px;
+  left: 150px
+}
+
+.gameDetails {
+  margin-top: 50px;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 60% auto;
+  grid-template-areas:
+    "about details"
+    "reviews .";
+  gap: 25px;
+}
+
+.gameDetails * {
+  margin-left: 0;
+}
+
+.about {
+  grid-area: about;
+}
+
+.details {
+  grid-area: details;
+  width: 250px;
+  height: max-content;
+  display: grid;
   border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.details div {
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.details div:last-child {
+  border-bottom: none;
+}
+
+.gameReviews {
+  grid-area: reviews;
+}
+
+.gameReviews h2 {
+  margin-bottom: 25px;
+}
+
+.review {
+  padding: 25px;
+  padding-left: 0;
+  border-bottom: 1px solid gray;
 }

@@ -10,6 +10,7 @@ const GameFormPage = ({ edit }) => {
   const currentGame = useSelector(state => state.games.current);
   const [title, setTitle] = useState(edit ? currentGame.title : '');
   const [description, setDescription] = useState(edit ? currentGame.description : '');
+  const [image, setImage] = useState(edit ? currentGame.image : '');
   const [url, setUrl] = useState(edit ? currentGame.url : '');
   const [steamUrl, setSteamUrl] = useState(edit ? currentGame.steamUrl : '');
   const [releaseDate, setReleaseDate] = useState(edit ? currentGame.releaseDate : undefined);
@@ -40,6 +41,10 @@ const GameFormPage = ({ edit }) => {
       <label>
         Description
         <textarea value={description} onChange={e => setDescription(e.target.value)} required />
+      </label>
+      <label>
+        Image
+        <input type='text' value={image} onChange={e => setImage(e.target.value)} />
       </label>
       <label>
         URL
