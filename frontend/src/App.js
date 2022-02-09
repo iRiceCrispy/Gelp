@@ -33,7 +33,7 @@ function App() {
           </Route>
           <Route path='/games/add'>
             <Navigation />
-            <GameFormPage />
+            <GameFormPage edit={false} />
           </Route>
           <Route exact path={'/games/:gameId(\\d+)'}>
             <Navigation />

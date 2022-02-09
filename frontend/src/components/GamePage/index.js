@@ -15,8 +15,8 @@ const GamePage = () => {
     dispatch(getGame(gameId)).then(() => setIsLoaded(true));
   }, [dispatch, gameId]);
 
-  const removeGameEvent = () => {
-    dispatch(removeGame(gameId));
+  const removeGameEvent = async () => {
+    await dispatch(removeGame(gameId));
 
     return history.push('/');
   };
@@ -27,7 +27,7 @@ const GamePage = () => {
         <div
           className='gameImage'
           style={{
-            backgroundImage: `url(${game.image})`,
+            backgroundImage: `url(${game.image || <></>})`,
           }}
         >
           <div className='gameHeading'>

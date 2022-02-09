@@ -10,24 +10,35 @@ const GameFormPage = ({ edit }) => {
   const currentGame = useSelector(state => state.games.current);
   const [title, setTitle] = useState(edit ? currentGame.title : '');
   const [description, setDescription] = useState(edit ? currentGame.description : '');
-  const [image, setImage] = useState(edit ? currentGame.image : '');
-  const [url, setUrl] = useState(edit ? currentGame.url : '');
-  const [steamUrl, setSteamUrl] = useState(edit ? currentGame.steamUrl : '');
-  const [releaseDate, setReleaseDate] = useState(edit ? currentGame.releaseDate : undefined);
+  const [image, setImage] = useState(edit ? currentGame.image || '' : '');
+  const [url, setUrl] = useState(edit ? currentGame.url || '' : '');
+  const [steamUrl, setSteamUrl] = useState(edit ? currentGame.steamUrl || '' : '');
+  const [releaseDate, setReleaseDate] = useState(
+    edit ? currentGame.releaseDate || undefined : undefined
+  );
 
   if (!sessionUser) return <Redirect to='/login' />;
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    const game = { ...currentGame, title, description, url, steamUrl, releaseDate };
-
     if (!edit) {
-      game.ownerId = sessionUser.id;
-      dispatch(addGame(game));
+      const game = {
+        ownerId: sessionUser.id,
+        title,
+        description,
+        image,
+        url,
+        steamUrl,
+        releaseDate,
+      };
+
+      await dispatch(addGame(game));
       return history.push('/');
     } else {
-      dispatch(editGame(game));
+      const game = { ...currentGame, title, description, url, image, steamUrl, releaseDate };
+
+      await dispatch(editGame(game));
       return history.push('.');
     }
   };

@@ -18,16 +18,16 @@ router.get(
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    const { ownerId, title, description, url, steamUrl, releaseDate, currentVersion } = req.body;
+    const { ownerId, title, description, image, url, steamUrl, releaseDate } = req.body;
 
     const game = await Game.create({
       ownerId,
       title,
       description,
+      image,
       url,
       steamUrl,
       releaseDate,
-      currentVersion,
     });
 
     return res.status(201).json(game);
@@ -52,16 +52,17 @@ router.put(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const { title, description, url, steamUrl, releaseDate, currentVersion } = req.body;
+    const { title, description, image, url, steamUrl, releaseDate, currentVersion } = req.body;
 
     const game = await Game.findByPk(id);
 
-    if (title) game.title = title;
-    if (description) game.description = description;
-    if (url) game.url = url;
-    if (steamUrl) game.steamUrl = steamUrl;
-    if (releaseDate) game.releaseDate = releaseDate;
-    if (currentVersion) game.currentVersion = currentVersion;
+    game.title = title;
+    game.description = description;
+    game.image = image;
+    game.url = url;
+    game.steamUrl = steamUrl;
+    game.releaseDate = releaseDate;
+    game.currentVersion = currentVersion;
 
     await game.save();
 

@@ -22,7 +22,7 @@ const GameList = () => {
             <div
               className='gameContainer'
               style={{
-                backgroundImage: `url(${game.image})`,
+                backgroundImage: `url(${game.image || <></>})`,
               }}
             ></div>
             <p className='gameTitle'>{game.title}</p>
