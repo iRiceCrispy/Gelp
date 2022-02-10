@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGame, removeGame } from '../../store/games';
+import Reviews from './Reviews.js';
 import './GamePage.css';
 
 const GamePage = () => {
@@ -41,6 +42,9 @@ const GamePage = () => {
                 <button className='btn btnTrans' type='button' onClick={() => removeGameEvent()}>
                   Delete
                 </button>
+                <Link className='btn btnTrans' to={`/games/${gameId}/reviews/add`}>
+                  Add A Review
+                </Link>
               </div>
             )}
           </div>
@@ -60,15 +64,7 @@ const GamePage = () => {
               <p>Release date: {game.releaseDate}</p>
             </div>
           </div>
-          <div className='gameReviews'>
-            <h2>Reviews</h2>
-            {game.Reviews.map(review => (
-              <div key={review.id} className='review'>
-                <span>Rating: {review.rating}</span>
-                <p>{review.body}</p>
-              </div>
-            ))}
-          </div>
+          <Reviews game={game} />
         </div>
       </div>
     )

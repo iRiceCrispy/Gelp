@@ -161,7 +161,11 @@ const gamesReducer = (state = initialState, action) => {
       state.list = games;
       return { ...state };
     case GET:
-      state.current = action.game;
+      state.current = { ...action.game };
+      state.current.Reviews = {};
+      action.game.Reviews.forEach(review => {
+        state.current.Reviews[review.id] = review;
+      });
       return { ...state };
     case ADD:
       state.list[action.game.id] = action.game;
@@ -173,12 +177,12 @@ const gamesReducer = (state = initialState, action) => {
       delete state.list[action.id];
       return { ...state };
     case ADD_REVIEW:
-      game = state.list[action.gameId];
+      game = state.current;
       game.Reviews[action.review.id] = action.review;
       state.current = game;
       return { ...state };
     case EDIT_REVIEW:
-      game = state.list[action.gameId];
+      game = state.current;
       game.Reviews[action.review.id] = action.review;
       state.current = game;
       return { ...state };

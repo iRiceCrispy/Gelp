@@ -8,6 +8,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import GameFormPage from './components/GameFormPage';
 import GamePage from './components/GamePage';
+import ReviewFormPage from './components/ReviewFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,14 @@ function App() {
           <Route path={'/games/:gameId(\\d+)/edit'}>
             <Navigation />
             <GameFormPage edit={true} />
+          </Route>
+          <Route path={'/games/:gameId(\\d+)/reviews/add'}>
+            <Navigation />
+            <ReviewFormPage edit={false} />
+          </Route>
+          <Route path={'/reviews/:reviewId(\\d+)/edit'}>
+            <Navigation />
+            <ReviewFormPage edit={true} />
           </Route>
           <Route>404 not found</Route>
         </Switch>
