@@ -5,6 +5,9 @@ const GET = 'games/get';
 const ADD = 'games/add';
 const EDIT = 'games/edit';
 const REMOVE = 'games/remove';
+const ADD_REVIEW = 'games/add_review';
+const EDIT_REVIEW = 'games/edit_review';
+const REMOVE_REVIEW = 'games/remove_review';
 
 const load = games => ({
   type: LOAD,
@@ -29,6 +32,24 @@ const edit = game => ({
 const remove = id => ({
   type: REMOVE,
   id,
+});
+
+const addRev = (gameId, review) => ({
+  type: ADD_REVIEW,
+  gameId,
+  review,
+});
+
+const editRev = (gameId, review) => ({
+  type: EDIT_REVIEW,
+  gameId,
+  review,
+});
+
+const removeRev = (gameId, reviewId) => ({
+  type: REMOVE_REVIEW,
+  gameId,
+  reviewId,
 });
 
 export const loadGames = () => async dispatch => {
@@ -84,12 +105,53 @@ export const removeGame = id => async dispatch => {
   return res;
 };
 
+export const addReview = data => async dispatch => {
+  const { gameId } = data;
+
+  const res = await csrfFetch(`/api/games/${gameId}/reviews`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+
+  const review = await res.json();
+  dispatch(addRev(gameId, review));
+
+  return res;
+};
+
+export const editReview = data => async dispatch => {
+  const { gameId } = data;
+
+  const res = await csrfFetch(`/reviews/${data.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+
+  const review = await res.json();
+  dispatch(editRev(gameId, review));
+
+  return res;
+};
+
+export const deleteReview = data => async dispatch => {
+  const { gameId, reviewId } = data;
+
+  const res = await csrfFetch(`/reviews/${reviewId}`, {
+    method: 'DELETE',
+  });
+
+  dispatch(removeRev(gameId, reviewId));
+
+  return res;
+};
+
 const initialState = {
   list: {},
   current: {},
 };
 
 const gamesReducer = (state = initialState, action) => {
+  let game;
   switch (action.type) {
     case LOAD:
       const games = {};
@@ -109,6 +171,19 @@ const gamesReducer = (state = initialState, action) => {
       return { ...state };
     case REMOVE:
       delete state.list[action.id];
+      return { ...state };
+    case ADD_REVIEW:
+      game = state.list[action.gameId];
+      game.Reviews[action.review.id] = action.review;
+      state.current = game;
+      return { ...state };
+    case EDIT_REVIEW:
+      game = state.list[action.gameId];
+      game.Reviews[action.review.id] = action.review;
+      state.current = game;
+      return { ...state };
+    case REMOVE_REVIEW:
+      delete state.current.Reviews[action.review.id];
       return { ...state };
     default:
       return state;
