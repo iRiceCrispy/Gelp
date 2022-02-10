@@ -10,10 +10,14 @@ const Navigation = () => {
     <nav className='nav'>
       <div className='navBar'>
         <div className='home'>
-          <Link to='/'>Home</Link>
+          <Link className='navText' to='/'>
+            Home
+          </Link>
         </div>
         <div className='options'>
-          <Link to='/games/add'>Add Game</Link>
+          <Link className='navText' to='/games/add'>
+            Add Game
+          </Link>
         </div>
         <div className='userAuth'>
           {sessionUser ? (
@@ -21,12 +25,12 @@ const Navigation = () => {
           ) : (
             <ul>
               <li>
-                <Link className='login' to='/login'>
+                <Link className='navText' className='login' to='/login'>
                   Login
                 </Link>
               </li>
               <li>
-                <Link className='logout' to='/signup'>
+                <Link className='navText' className='logout' to='/signup'>
                   Signup
                 </Link>
               </li>
