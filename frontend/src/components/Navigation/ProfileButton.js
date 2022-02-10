@@ -11,7 +11,9 @@ const DropDownMenu = () => {
     <div className='profileMenu' onClick={e => e.stopPropagation()}>
       <p>Username: {sessionUser.username}</p>
       <p>Email: {sessionUser.email}</p>
-      <button onClick={() => dispatch(logout())}>Logout</button>
+      <button className='btn' onClick={() => dispatch(logout())}>
+        Logout
+      </button>
     </div>
   );
 };
@@ -33,7 +35,7 @@ const ProfileButton = () => {
 
   return (
     <div className='profile'>
-      <button className='profileButton' onClick={() => !showMenu && setShowMenu(true)}>
+      <button className='profileButton navText' onClick={() => !showMenu && setShowMenu(true)}>
         <i className='fas fa-user-circle fa-2x'></i>
       </button>
       {showMenu && <DropDownMenu />}
