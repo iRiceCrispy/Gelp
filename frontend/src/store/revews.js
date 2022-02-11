@@ -47,7 +47,7 @@ export const addReview = data => async dispatch => {
 };
 
 export const editReview = data => async dispatch => {
-  const res = await csrfFetch(`/reviews/${data.id}`, {
+  const res = await csrfFetch(`/api/reviews/${data.id}`, {
     method: 'PUT',
     body: JSON.stringify(data),
   });
@@ -59,7 +59,7 @@ export const editReview = data => async dispatch => {
 };
 
 export const deleteReview = id => async dispatch => {
-  const res = await csrfFetch(`/reviews/${id}`, {
+  const res = await csrfFetch(`/api/reviews/${id}`, {
     method: 'DELETE',
   });
 

@@ -29,7 +29,7 @@ const GamePage = () => {
           <div className='gameHeading'>
             <h1>{game.title}</h1>
             {sessionUser.id === game.ownerId && (
-              <div className='buttonContainer'>
+              <div className='gameButtonContainer'>
                 <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
                   Edit
                 </Link>
@@ -58,7 +58,7 @@ const GamePage = () => {
               <p>Release date: {game.releaseDate}</p>
             </div>
           </div>
-          <Reviews game={game} />
+          <Reviews game={game} sessionUser={sessionUser} />
         </div>
       </div>
     );

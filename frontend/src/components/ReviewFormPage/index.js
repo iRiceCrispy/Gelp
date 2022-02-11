@@ -27,12 +27,13 @@ const ReviewFormPage = ({ edit }) => {
       };
 
       await dispatch(addReview(review));
+      return history.push(`/games/${gameId}`);
     } else {
       const review = { ...currentReview, body, rating };
 
       await dispatch(editReview(review));
+      return history.push(`/games/${review.gameId}`);
     }
-    return history.push('..');
   };
 
   return (
