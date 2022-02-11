@@ -1,0 +1,26 @@
+.gameReviews {
+  grid-area: reviews;
+}
+
+.gameReviews h2 {
+  margin-bottom: 25px;
+}
+
+.review {
+  padding: 25px;
+  padding-left: 0;
+  border-bottom: 1px solid gray;
+}
+
+.reviewRating {
+  font-weight: 550;
+}
+
+.reviewBody {
+  margin-top: 25px;
+  text-align: justify;
+}
+
+.reviewButtonContainer {
+  margin-top: 25px;
+}

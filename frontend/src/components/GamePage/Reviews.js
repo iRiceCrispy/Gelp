@@ -1,6 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteReview } from '../../store/revews';
+import './Reviews.css';
 
 const Reviews = ({ game, sessionUser }) => {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Reviews = ({ game, sessionUser }) => {
       <h2>Reviews</h2>
       {reviews.map(review => (
         <div key={review.id} className='review'>
-          <span>Rating: {review.rating}</span>
-          <p>{review.body}</p>
+          <span className='reviewRating'>Rating: {review.rating}</span>
+          <p className='reviewBody'>{review.body}</p>
           {sessionUser.id === review.userId && (
             <div className='reviewButtonContainer'>
               <Link className='btn' to={`/reviews/${review.id}/edit`}>
