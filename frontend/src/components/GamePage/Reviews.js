@@ -18,7 +18,17 @@ const Reviews = ({ game, sessionUser }) => {
       <h2>Reviews</h2>
       {reviews.map(review => (
         <div key={review.id} className='review'>
-          <span className='reviewRating'>Rating: {review.rating}</span>
+          <div className='reviewRating'>
+            <span>Review:</span>
+            {[...Array(5)].map((star, i) => {
+              i += 1;
+              return (
+                <span>
+                  <span className={i <= review.rating ? 'star starFilled' : 'star'}>&#9733;</span>
+                </span>
+              );
+            })}
+          </div>
           <p className='reviewBody'>{review.body}</p>
           {sessionUser.id === review.userId && (
             <div className='reviewButtonContainer'>

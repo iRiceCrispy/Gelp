@@ -24,3 +24,11 @@
 .reviewButtonContainer {
   margin-top: 25px;
 }
+
+.star {
+  color: gray
+}
+
+.starFilled {
+  color: red
+}
