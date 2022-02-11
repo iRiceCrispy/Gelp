@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview, editReview } from '../../store/games';
+import { addReview, editReview } from '../../store/revews';
 
 const ReviewFormPage = ({ edit }) => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const ReviewFormPage = ({ edit }) => {
   const sessionUser = useSelector(state => state.session.user);
   const gameId = parseInt(useParams().gameId);
   const reviewId = parseInt(useParams().reviewId);
-  const currentReview = useSelector(state => state.games.current.Reviews[reviewId]);
+  const currentReview = useSelector(state => state.reviews[reviewId]);
   const [body, setBody] = useState(edit ? currentReview.body : '');
   const [rating, setRating] = useState(edit ? currentReview.rating : 0);
 

@@ -1,5 +1,9 @@
+import { useSelector } from 'react-redux';
+
 const Reviews = ({ game }) => {
-  const reviews = Object.values(game.Reviews);
+  const reviewsList = useSelector(state => state.reviews);
+  const reviews = Object.values(reviewsList).filter(review => review.gameId === game.id);
+
   return (
     <div className='gameReviews'>
       <h2>Reviews</h2>

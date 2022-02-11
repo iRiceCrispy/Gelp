@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame, editGame } from '../../store/games';
 
 const GameFormPage = ({ edit }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { gameId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const currentGame = useSelector(state => state.games.current);
+  const currentGame = useSelector(state => state.games[gameId]);
   const [title, setTitle] = useState(edit ? currentGame.title : '');
   const [description, setDescription] = useState(edit ? currentGame.description : '');
   const [image, setImage] = useState(edit ? currentGame.image || '' : '');

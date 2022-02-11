@@ -4,6 +4,16 @@ const { Review } = require('../../db/models');
 
 const router = express.Router();
 
+// Get all games
+router.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    const reviews = await Review.findAll();
+
+    return res.json(reviews);
+  })
+);
+
 // Edit a review
 router.put(
   '/:id(\\d+)',
