@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
+import { login, demoLogin } from '../../store/session';
 import './LoginForm.css';
 
 const LoginFormPage = () => {
@@ -16,7 +16,7 @@ const LoginFormPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(async res => {
+    return dispatch(login({ credential, password })).catch(async res => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
@@ -48,7 +48,7 @@ const LoginFormPage = () => {
         />
       </label>
       <button type='submit'>Login</button>
-      <button type='button' onClick={() => dispatch(sessionActions.demoLogin())}>
+      <button type='button' onClick={() => dispatch(demoLogin())}>
         Login as demo
       </button>
     </form>
