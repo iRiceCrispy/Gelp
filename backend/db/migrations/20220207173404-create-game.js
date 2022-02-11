@@ -28,7 +28,7 @@ module.exports = {
       url: {
         type: Sequelize.STRING,
       },
-      steamUrl: {
+      downloadLink: {
         type: Sequelize.STRING,
       },
       releaseDate: {

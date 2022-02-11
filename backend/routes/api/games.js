@@ -18,7 +18,7 @@ router.get(
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    const { ownerId, title, description, image, url, steamUrl, releaseDate } = req.body;
+    const { ownerId, title, description, image, url, downloadLink, releaseDate } = req.body;
 
     const game = await Game.create({
       ownerId,
@@ -26,7 +26,7 @@ router.post(
       description,
       image,
       url,
-      steamUrl,
+      downloadLink,
       releaseDate,
     });
 
@@ -54,7 +54,7 @@ router.put(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const { title, description, image, url, steamUrl, releaseDate, currentVersion } = req.body;
+    const { title, description, image, url, downloadLink, releaseDate, currentVersion } = req.body;
 
     const game = await Game.findByPk(id);
 
@@ -62,7 +62,7 @@ router.put(
     game.description = description;
     game.image = image;
     game.url = url;
-    game.steamUrl = steamUrl;
+    game.downloadLink = downloadLink;
     game.releaseDate = releaseDate;
     game.currentVersion = currentVersion;
 

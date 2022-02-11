@@ -51,9 +51,11 @@ const GamePage = () => {
             <div>
               <a href={game.url}>Game homepage</a>
             </div>
-            <div>
-              <a href={game.steamUrl}>Steam url</a>
-            </div>
+            {game.downloadLink && (
+              <div>
+                <a href={game.downloadLink}>Download Link</a>
+              </div>
+            )}
             <div>
               <p>Release date: {game.releaseDate}</p>
             </div>
