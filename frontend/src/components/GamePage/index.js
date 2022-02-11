@@ -20,12 +20,13 @@ const GamePage = () => {
   if (game) {
     return (
       <div className='gamePage'>
-        <div
-          className='gameImage'
-          style={{
-            backgroundImage: `url(${game.image || <></>})`,
-          }}
-        >
+        <div className='gameHeadingContainer'>
+          <div
+            className='gameHeadingImage'
+            style={{
+              backgroundImage: `url(${game.image || <></>})`,
+            }}
+          ></div>
           <div className='gameHeading'>
             <h1>{game.title}</h1>
             {sessionUser.id === game.ownerId && (
