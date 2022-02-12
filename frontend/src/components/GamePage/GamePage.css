@@ -50,14 +50,12 @@
     "about details"
     "reviews .";
   gap: 25px;
-}
-
-.gameDetails * {
-  margin-left: 0;
+  position: relative;
 }
 
 .about {
   grid-area: about;
+  width: 100%;
 }
 
 .details {
@@ -67,6 +65,8 @@
   display: grid;
   border: 1px solid gray;
   border-radius: 5px;
+  position: sticky;
+  top: 15px;
 }
 
 .details div {

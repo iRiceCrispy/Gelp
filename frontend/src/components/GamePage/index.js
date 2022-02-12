@@ -11,6 +11,8 @@ const GamePage = () => {
   const game = useSelector(state => state.games[gameId]);
   const sessionUser = useSelector(state => state.session.user);
 
+  window.scrollTo(0, 0);
+
   const deleteGameEvent = async () => {
     await dispatch(deleteGame(gameId));
 
@@ -37,11 +39,11 @@ const GamePage = () => {
                 <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
                   Delete
                 </button>
-                <Link className='btn btnTrans' to={`/games/${gameId}/reviews/add`}>
-                  Add A Review
-                </Link>
               </div>
             )}
+            <Link className='btn btnRed' to={`/games/${gameId}/reviews/add`}>
+              Add A Review
+            </Link>
           </div>
         </div>
         <div className='gameDetails'>

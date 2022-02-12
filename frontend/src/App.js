@@ -12,6 +12,14 @@ import GameFormPage from './components/GameFormPage';
 import GamePage from './components/GamePage';
 import ReviewFormPage from './components/ReviewFormPage';
 
+const ScrollToTop = ({ children }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return <>{children}</>;
+};
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,7 +32,7 @@ function App() {
 
   return (
     isLoaded && (
-      <>
+      <ScrollToTop>
         <Switch>
           <Route exact path='/'>
             <Splash />
@@ -59,7 +67,7 @@ function App() {
           </Route>
           <Route>404 not found</Route>
         </Switch>
-      </>
+      </ScrollToTop>
     )
   );
 }

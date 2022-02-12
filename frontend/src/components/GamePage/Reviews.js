@@ -15,33 +15,34 @@ const Reviews = ({ game, sessionUser }) => {
 
   return (
     <div className='gameReviews'>
-      <h2>Reviews</h2>
-      {reviews.map(review => (
-        <div key={review.id} className='review'>
-          <div className='reviewRating'>
-            <span>Review:</span>
-            {[...Array(5)].map((star, i) => {
-              i += 1;
-              return (
-                <span>
+      <h2>Reviews:</h2>
+      {reviews.length ? (
+        reviews.map(review => (
+          <div key={review.id} className='review'>
+            <div className='reviewRating'>
+              {[...Array(5)].map((star, i) => {
+                i += 1;
+                return (
                   <span className={i <= review.rating ? 'star starFilled' : 'star'}>&#9733;</span>
-                </span>
-              );
-            })}
-          </div>
-          <p className='reviewBody'>{review.body}</p>
-          {sessionUser.id === review.userId && (
-            <div className='reviewButtonContainer'>
-              <Link className='btn' to={`/reviews/${review.id}/edit`}>
-                Edit
-              </Link>
-              <button className='btn' type='button' onClick={() => deleteReviewEvent(review.id)}>
-                Delete
-              </button>
+                );
+              })}
             </div>
-          )}
-        </div>
-      ))}
+            <p className='reviewBody'>{review.body}</p>
+            {sessionUser.id === review.userId && (
+              <div className='reviewButtonContainer'>
+                <Link className='btn' to={`/reviews/${review.id}/edit`}>
+                  Edit
+                </Link>
+                <button className='btn' type='button' onClick={() => deleteReviewEvent(review.id)}>
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        <p>No Reviews</p>
+      )}
     </div>
   );
 };
