@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       image: DataTypes.STRING,
       url: DataTypes.STRING,
-      steamUrl: DataTypes.STRING,
+      downloadLink: DataTypes.STRING,
       releaseDate: DataTypes.DATEONLY,
     },
     {}

@@ -13,7 +13,7 @@ const GameFormPage = ({ edit }) => {
   const [description, setDescription] = useState(edit ? currentGame.description : '');
   const [image, setImage] = useState(edit ? currentGame.image || '' : '');
   const [url, setUrl] = useState(edit ? currentGame.url || '' : '');
-  const [steamUrl, setSteamUrl] = useState(edit ? currentGame.steamUrl || '' : '');
+  const [downloadLink, setdownloadLink] = useState(edit ? currentGame.downloadLink || '' : '');
   const [releaseDate, setReleaseDate] = useState(
     edit ? currentGame.releaseDate || undefined : undefined
   );
@@ -30,14 +30,14 @@ const GameFormPage = ({ edit }) => {
         description,
         image,
         url,
-        steamUrl,
+        downloadLink,
         releaseDate,
       };
 
       await dispatch(addGame(game));
       return history.push('/');
     } else {
-      const game = { ...currentGame, title, description, url, image, steamUrl, releaseDate };
+      const game = { ...currentGame, title, description, url, image, downloadLink, releaseDate };
 
       await dispatch(editGame(game));
       return history.push('.');
@@ -63,8 +63,8 @@ const GameFormPage = ({ edit }) => {
         <input type='text' value={url} onChange={e => setUrl(e.target.value)} />
       </label>
       <label>
-        Steam URL
-        <input type='text' value={steamUrl} onChange={e => setSteamUrl(e.target.value)} />
+        Download Link
+        <input type='text' value={downloadLink} onChange={e => setdownloadLink(e.target.value)} />
       </label>
       <label>
         Release Date

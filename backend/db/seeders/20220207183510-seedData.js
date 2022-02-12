@@ -30,7 +30,7 @@ module.exports = {
             'Project Zomboid is the ultimate in zombie survival. Alone or in MP: you loot, build, craft, fight, farm and fish in a struggle to survive. A hardcore RPG skillset, a vast map, massively customisable sandbox and a cute tutorial raccoon await the unwary. So how will you die? All it takes is a bite...',
           image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/108600/header.jpg?t=1639992670',
           url: 'https://projectzomboid.com/blog/',
-          steamUrl: 'https://store.steampowered.com/app/108600/Project_Zomboid/',
+          downloadLink: 'https://store.steampowered.com/app/108600/Project_Zomboid/',
           releaseDate: '2013-11-08',
         },
         {
@@ -40,7 +40,7 @@ module.exports = {
             'Join over 260 Million Global Players in MapleStory, one of the original MMORPGs, where epic adventure, action-packed gameplay, & good friends await you! Featuring an iconic 2D art style, MapleStory offers the thrill of explosive power, bold anime-style self-expression, and absolute control of your characters’ awesome abilities. Build your perfect custom hero from over 40 distinct classes with thousands of unique cosmetic options, and set off on your journey to face never-ending challenges and enjoy extraordinary rewards. Discover Your Story!',
           image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/216150/header.jpg?t=1643829016',
           url: 'https://maplestory.nexon.net/',
-          steamUrl: 'https://store.steampowered.com/app/216150/MapleStory/',
+          downloadLink: 'https://store.steampowered.com/app/216150/MapleStory/',
           releaseDate: '2005-05-11',
         },
         {
@@ -51,7 +51,7 @@ module.exports = {
           image:
             'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Minecraft_now_available_on_Game_Pass_for_PC.jpg',
           url: 'https://www.minecraft.net/en-us',
-          steamUrl: '',
+          downloadLink: '',
           releaseDate: '2011-11-18',
         },
         {
@@ -62,7 +62,7 @@ module.exports = {
           image:
             'https://cdn1.dotesports.com/wp-content/uploads/2019/09/12195522/league-of-legends.jpg',
           url: 'https://www.leagueoflegends.com/en-us/',
-          steamUrl: '',
+          downloadLink: '',
           releaseDate: '2009-10-27',
         },
         {
@@ -73,7 +73,7 @@ module.exports = {
           image:
             'https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/67cf271c-e9f8-4c9c-8b90-f542a8268052_2560x1440-e54afb0597bb192adc27b76629067318',
           url: 'https://playvalorant.com/en-us/',
-          steamUrl: '',
+          downloadLink: '',
           releaseDate: '2020-07-02',
         },
       ],
