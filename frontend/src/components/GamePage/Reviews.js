@@ -21,9 +21,10 @@ const Reviews = ({ game, sessionUser }) => {
           <div key={review.id} className='review'>
             <div className='reviewRating'>
               {[...Array(5)].map((star, i) => {
-                i += 1;
                 return (
-                  <span className={i <= review.rating ? 'star starFilled' : 'star'}>&#9733;</span>
+                  <span className={i < review.rating ? `star starNum${review.rating}` : 'star'}>
+                    &#9733;
+                  </span>
                 );
               })}
             </div>
