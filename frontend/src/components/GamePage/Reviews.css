@@ -35,6 +35,22 @@
   padding: 5px;
 }
 
-.starFilled {
-  background-color: red;
+.starNum1 {
+  background-color: #f27e00;
+}
+
+.starNum2 {
+  background-color: #fbc418;
+}
+
+.starNum3 {
+  background-color: #ff8b00;
+}
+
+.starNum4 {
+  background-color: #ff3b00;
+}
+
+.starNum5 {
+  background-color: #f20008;
 }
