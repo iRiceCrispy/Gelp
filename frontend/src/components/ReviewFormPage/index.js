@@ -39,12 +39,12 @@ const ReviewFormPage = ({ edit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Body
-        <textarea value={body} onChange={e => setBody(e.target.value)} required />
-      </label>
-      <label>
         Rating
         <input type='number' value={rating} onChange={e => setRating(e.target.value)} />
+      </label>
+      <label>
+        Body
+        <textarea value={body} onChange={e => setBody(e.target.value)} required />
       </label>
       <button type='submit'>{edit ? 'Edit Review' : 'Add Review'}</button>
     </form>
