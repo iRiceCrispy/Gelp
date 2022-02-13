@@ -31,7 +31,7 @@ const GamePage = () => {
           ></div>
           <div className='gameHeading'>
             <h1>{game.title}</h1>
-            {sessionUser.id === game.ownerId && (
+            {sessionUser?.id === game.ownerId && (
               <div className='gameButtonContainer'>
                 <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
                   Edit

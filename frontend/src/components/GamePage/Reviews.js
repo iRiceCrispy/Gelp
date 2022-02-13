@@ -28,7 +28,7 @@ const Reviews = ({ game, sessionUser }) => {
               })}
             </div>
             <p className='reviewBody'>{review.body}</p>
-            {sessionUser.id === review.userId && (
+            {sessionUser?.id === review.userId && (
               <div className='reviewButtonContainer'>
                 <Link className='btn' to={`/reviews/${review.id}/edit`}>
                   Edit
