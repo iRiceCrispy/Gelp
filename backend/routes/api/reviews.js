@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Review } = require('../../db/models');
+const { Game, Review, User } = require('../../db/models');
 
 const router = express.Router();
 
@@ -8,7 +8,20 @@ const router = express.Router();
 router.get(
   '/',
   asyncHandler(async (req, res) => {
-    const reviews = await Review.findAll();
+    const reviews = await Review.findAll({
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['username'],
+        },
+        {
+          model: Game,
+          as: 'game',
+          attributes: ['title'],
+        },
+      ],
+    });
 
     return res.json(reviews);
   })

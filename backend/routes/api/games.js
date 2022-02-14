@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Game, Review } = require('../../db/models');
+const { Game, Review, User } = require('../../db/models');
 
 const router = express.Router();
 
@@ -8,7 +8,15 @@ const router = express.Router();
 router.get(
   '/',
   asyncHandler(async (req, res) => {
-    const games = await Game.findAll();
+    const games = await Game.findAll({
+      include: [
+        {
+          model: User,
+          as: 'owner',
+          attributes: ['username'],
+        },
+      ],
+    });
 
     return res.json(games);
   })
@@ -20,15 +28,28 @@ router.post(
   asyncHandler(async (req, res) => {
     const { ownerId, title, description, image, url, downloadLink, releaseDate } = req.body;
 
-    const game = await Game.create({
-      ownerId,
-      title,
-      description,
-      image,
-      url,
-      downloadLink,
-      releaseDate,
-    });
+    const game = await Game.create(
+      {
+        ownerId,
+        title,
+        description,
+        image,
+        url,
+        downloadLink,
+        releaseDate,
+      },
+      {
+        include: [
+          {
+            model: User,
+            as: 'owner',
+            attributes: ['username'],
+          },
+        ],
+      }
+    );
+
+    console.log(game);
 
     return res.status(201).json(game);
   })
@@ -42,7 +63,24 @@ router.get(
 
     const game = await Game.findOne({
       where: { id },
-      include: ['Reviews'],
+      include: [
+        {
+          model: Review,
+          as: 'reviews',
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['username'],
+            },
+          ],
+        },
+        {
+          model: User,
+          as: 'owner',
+          attributes: ['username'],
+        },
+      ],
     });
 
     return res.json(game);
@@ -93,12 +131,28 @@ router.post(
     const gameId = parseInt(req.params.gameId);
     const { userId, body, rating } = req.body;
 
-    const review = await Review.create({
-      userId,
-      gameId,
-      body,
-      rating,
-    });
+    const review = await Review.create(
+      {
+        userId,
+        gameId,
+        body,
+        rating,
+      },
+      {
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['username'],
+          },
+          {
+            model: Game,
+            as: 'game',
+            attributes: ['title'],
+          },
+        ],
+      }
+    );
 
     return res.status(201).json(review);
   })

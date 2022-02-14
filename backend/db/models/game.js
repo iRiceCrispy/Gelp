@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Game.associate = function (models) {
-    Game.belongsTo(models.User, { foreignKey: 'ownerId' });
-    Game.hasMany(models.Review, { foreignKey: 'gameId' });
+    Game.belongsTo(models.User, { foreignKey: 'ownerId', as: 'owner' });
+    Game.hasMany(models.Review, { foreignKey: 'gameId', as: 'reviews' });
   };
   return Game;
 };
