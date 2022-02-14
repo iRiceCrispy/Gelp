@@ -19,11 +19,15 @@ const Reviews = ({ game, sessionUser }) => {
       {reviews.length ? (
         reviews.map(review => (
           <div key={review.id} className='review'>
+            <p className='reviewUser'>User: {review.user.username}</p>
             <div className='reviewRating'>
               {[...Array(5)].map((star, i) => {
                 return (
-                  <span className={i < review.rating ? `star starNum${review.rating}` : 'star'}>
-                    &#9733;
+                  <span
+                    key={i}
+                    className={i < review.rating ? `star starNum${review.rating}` : 'star'}
+                  >
+                    <i className='fas fa-star'></i>
                   </span>
                 );
               })}

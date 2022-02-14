@@ -30,17 +30,20 @@ const GamePage = () => {
             }}
           ></div>
           <div className='gameHeading'>
-            <h1>{game.title}</h1>
-            {sessionUser?.id === game.ownerId && (
-              <div className='gameButtonContainer'>
-                <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
-                  Edit
-                </Link>
-                <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
-                  Delete
-                </button>
-              </div>
-            )}
+            <h1 className='gameHeadingTitle'>{game.title}</h1>
+            <div className='gameSubHeading'>
+              <h2 className='gameOwner'>Created by: {game.owner.username}</h2>
+              {sessionUser?.id === game.ownerId && (
+                <div className='gameButtonContainer'>
+                  <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
+                    Edit
+                  </Link>
+                  <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
             <Link className='btn btnRed' to={`/games/${gameId}/reviews/add`}>
               Add A Review
             </Link>
@@ -50,19 +53,25 @@ const GamePage = () => {
           <h2 className='about'>
             About the game: <p>{game.description}</p>
           </h2>
-          <div className='details'>
-            <div>
-              <a href={game.url}>Game homepage</a>
+          {(game.url || game.downloadLink || game.releaseDate) && (
+            <div className='details'>
+              {game.url && (
+                <div>
+                  <a href={game.url}>Game homepage</a>
+                </div>
+              )}
+              {game.downloadLink && (
+                <div>
+                  <a href={game.downloadLink}>Download Link</a>
+                </div>
+              )}
+              {game.releaseDate && (
+                <div>
+                  <p>Release date: {game.releaseDate}</p>
+                </div>
+              )}
             </div>
-            {game.downloadLink && (
-              <div>
-                <a href={game.downloadLink}>Download Link</a>
-              </div>
-            )}
-            <div>
-              <p>Release date: {game.releaseDate}</p>
-            </div>
-          </div>
+          )}
           <Reviews game={game} sessionUser={sessionUser} />
         </div>
       </div>

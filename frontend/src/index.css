@@ -42,4 +42,5 @@ body * {
   color: white;
   background: rgba(255, 255, 255, 0.20);
   border: none;
+  text-shadow: 0 0 1px black;
 }

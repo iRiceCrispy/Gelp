@@ -4,7 +4,7 @@
 }
 
 .gameReviews h2 {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .review {
@@ -12,6 +12,11 @@
   padding-left: 0;
   border-bottom: 1px solid gray;
   width: 100%;
+}
+
+.reviewUser {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .reviewRating {
@@ -31,7 +36,7 @@
   color: white;
   border-radius: 5px;
   background-color: gray;
-  margin-left: 2px;
+  margin-right: 2px;
   padding: 5px;
 }
 
