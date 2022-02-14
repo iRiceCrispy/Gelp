@@ -42,6 +42,7 @@ export const addGame = data => async dispatch => {
   });
 
   const game = await res.json();
+  console.log(game);
   dispatch(add(game));
 
   return res;
@@ -82,7 +83,7 @@ const gamesReducer = (state = {}, action) => {
       state[action.game.id] = action.game;
       return { ...state };
     case EDIT:
-      state[action.game.id] = action.game;
+      state[action.game.id] = { ...state[action.game.id], ...action.game };
       return { ...state };
     case REMOVE:
       delete state[action.id];

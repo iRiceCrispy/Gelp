@@ -80,7 +80,7 @@ const reviewsReducer = (state = {}, action) => {
       state[action.review.id] = action.review;
       return { ...state };
     case EDIT:
-      state[action.review.id] = action.review;
+      state[action.review.id] = { ...state[action.review.id], ...action.review };
       return { ...state };
     case REMOVE:
       delete state[action.id];

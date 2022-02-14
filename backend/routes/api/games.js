@@ -28,26 +28,23 @@ router.post(
   asyncHandler(async (req, res) => {
     const { ownerId, title, description, image, url, downloadLink, releaseDate } = req.body;
 
-    const game = await Game.create(
-      {
-        ownerId,
-        title,
-        description,
-        image,
-        url,
-        downloadLink,
-        releaseDate,
+    const g = await Game.create({
+      ownerId,
+      title,
+      description,
+      image,
+      url,
+      downloadLink,
+      releaseDate,
+    });
+
+    const game = await Game.findByPk(g.id, {
+      include: {
+        model: User,
+        as: 'owner',
+        attributes: ['username'],
       },
-      {
-        include: [
-          {
-            model: User,
-            as: 'owner',
-            attributes: ['username'],
-          },
-        ],
-      }
-    );
+    });
 
     console.log(game);
 
@@ -61,8 +58,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
 
-    const game = await Game.findOne({
-      where: { id },
+    const game = await Game.findByPk(id, {
       include: [
         {
           model: Review,
@@ -131,28 +127,27 @@ router.post(
     const gameId = parseInt(req.params.gameId);
     const { userId, body, rating } = req.body;
 
-    const review = await Review.create(
-      {
-        userId,
-        gameId,
-        body,
-        rating,
-      },
-      {
-        include: [
-          {
-            model: User,
-            as: 'user',
-            attributes: ['username'],
-          },
-          {
-            model: Game,
-            as: 'game',
-            attributes: ['title'],
-          },
-        ],
-      }
-    );
+    const rev = await Review.create({
+      userId,
+      gameId,
+      body,
+      rating,
+    });
+
+    const review = await Review.findByPk(rev.id, {
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['username'],
+        },
+        {
+          model: Game,
+          as: 'game',
+          attributes: ['title'],
+        },
+      ],
+    });
 
     return res.status(201).json(review);
   })
