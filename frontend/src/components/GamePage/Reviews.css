@@ -40,6 +40,10 @@
   padding: 5px;
 }
 
+.star:hover {
+  cursor: pointer;
+}
+
 .starNum1 {
   background-color: #f27e00;
 }

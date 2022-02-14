@@ -24,6 +24,11 @@ body * {
   font-weight: bold;
 }
 
+.errors {
+  color: red;
+  margin-bottom: 15px;
+}
+
 form {
   width: fit-content;
   padding: 50px;

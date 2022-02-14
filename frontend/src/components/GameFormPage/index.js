@@ -17,10 +17,11 @@ const GameFormPage = ({ edit }) => {
   const [releaseDate, setReleaseDate] = useState(
     edit ? currentGame.releaseDate || undefined : undefined
   );
+  const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return <Redirect to='/login' />;
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (!edit) {
@@ -34,13 +35,21 @@ const GameFormPage = ({ edit }) => {
         releaseDate,
       };
 
-      await dispatch(addGame(game));
-      return history.push('/');
+      return dispatch(addGame(game))
+        .then(() => history.push('/'))
+        .catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
     } else {
       const game = { ...currentGame, title, description, url, image, downloadLink, releaseDate };
 
-      await dispatch(editGame(game));
-      return history.push('.');
+      return dispatch(editGame(game))
+        .then(() => history.push('.'))
+        .catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
     }
   };
 
@@ -48,6 +57,11 @@ const GameFormPage = ({ edit }) => {
     <div className='formContainer'>
       <p className='formTitle'>{edit ? 'Edit Game' : 'Add Game'}</p>
       <form onSubmit={handleSubmit}>
+        <ul className='errors'>
+          {errors.map((error, i) => (
+            <li key={i}>{error}</li>
+          ))}
+        </ul>
         <label>
           Title
           <input type='text' value={title} onChange={e => setTitle(e.target.value)} required />

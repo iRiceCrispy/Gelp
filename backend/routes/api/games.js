@@ -1,8 +1,26 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 const { Game, Review, User } = require('../../db/models');
 
 const router = express.Router();
+
+const validateGame = [
+  check('title').exists({ checkFalsy: true }).withMessage('Please provide a valid game title'),
+  check('description')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid game description'),
+  handleValidationErrors,
+];
+
+const validateRating = [
+  check('body').exists({ checkFalsy: true }).withMessage('Please provide a valid review'),
+  check('rating')
+    .custom(value => value >= 1 && value <= 5)
+    .withMessage('Rating must be between 0 and 5 stars'),
+  handleValidationErrors,
+];
 
 // Get all games
 router.get(
@@ -25,6 +43,7 @@ router.get(
 // Create a new game
 router.post(
   '/',
+  validateGame,
   asyncHandler(async (req, res) => {
     const { ownerId, title, description, image, url, downloadLink, releaseDate } = req.body;
 
@@ -86,6 +105,7 @@ router.get(
 // Edit a game
 router.put(
   '/:id(\\d+)',
+  validateGame,
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const { title, description, image, url, downloadLink, releaseDate, currentVersion } = req.body;
@@ -123,6 +143,7 @@ router.delete(
 // Add a review for a game
 router.post(
   '/:gameId(\\d+)/reviews',
+  validateRating,
   asyncHandler(async (req, res) => {
     const gameId = parseInt(req.params.gameId);
     const { userId, body, rating } = req.body;

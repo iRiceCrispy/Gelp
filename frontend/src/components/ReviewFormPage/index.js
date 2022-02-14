@@ -14,7 +14,8 @@ const ReviewFormPage = ({ edit }) => {
   const currentGame = useSelector(state => state.games[gameId]);
   const [body, setBody] = useState(edit ? currentReview.body : '');
   const [rating, setRating] = useState(edit ? currentReview.rating : 0);
-  const [hover, setHover] = useState(0);
+  const [hover, setHover] = useState(rating);
+  const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return <Redirect to='/login' />;
 
@@ -29,13 +30,21 @@ const ReviewFormPage = ({ edit }) => {
         rating,
       };
 
-      await dispatch(addReview(review));
-      return history.push(`/games/${gameId}`);
+      return dispatch(addReview(review))
+        .then(() => history.push(`/games/${gameId}`))
+        .catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
     } else {
       const review = { ...currentReview, body, rating };
 
-      await dispatch(editReview(review));
-      return history.push(`/games/${review.gameId}`);
+      return dispatch(editReview(review))
+        .then(() => history.push(`/games/${review.gameId}`))
+        .catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
     }
   };
 
@@ -47,6 +56,11 @@ const ReviewFormPage = ({ edit }) => {
           : `Add Review for ${currentGame?.title || currentReview.game.title}`}
       </p>
       <form onSubmit={handleSubmit}>
+        <ul className='errors'>
+          {errors.map((error, i) => (
+            <li key={i}>{error}</li>
+          ))}
+        </ul>
         <div className='starRating'>
           {[...Array(5)].map((star, i) => {
             return (

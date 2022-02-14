@@ -33,15 +33,11 @@ function SignupFormPage() {
     <div className='formContainer'>
       <p className='formTitle'>Sign Up</p>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+        <ul className='errors'>
+          {errors.map((error, i) => (
+            <li key={i}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
-          <input type='text' value={email} onChange={e => setEmail(e.target.value)} required />
-        </label>
         <label>
           Username
           <input
@@ -50,6 +46,10 @@ function SignupFormPage() {
             onChange={e => setUsername(e.target.value)}
             required
           />
+        </label>
+        <label>
+          Email
+          <input type='text' value={email} onChange={e => setEmail(e.target.value)} required />
         </label>
         <label>
           Password

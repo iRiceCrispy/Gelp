@@ -12,7 +12,7 @@ const GamePage = () => {
   const sessionUser = useSelector(state => state.session.user);
   const reviewsList = useSelector(state => state.reviews);
   const reviews = Object.values(reviewsList)
-    .filter(review => review.gameId === game.id)
+    .filter(review => review.gameId === game?.id)
     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
   const getAvgReview = () => {

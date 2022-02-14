@@ -1,8 +1,16 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 const { Game, Review, User } = require('../../db/models');
 
 const router = express.Router();
+
+const validateRating = [
+  check('body').exists({ checkFalsy: true }).withMessage('Please provide a valid review'),
+  check('rating').isNumeric({ min: 0, max: 5 }).withMessage('Rating must be between 0 and 5 stars'),
+  handleValidationErrors,
+];
 
 // Get all games
 router.get(
@@ -30,6 +38,7 @@ router.get(
 // Edit a review
 router.put(
   '/:id(\\d+)',
+  validateRating,
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const { body, rating } = req.body;
