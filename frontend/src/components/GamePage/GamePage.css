@@ -31,6 +31,17 @@
   margin-left: 15px;
 }
 
+.averageRating .star {
+  border: 1px solid white;
+}
+
+.numOfReviews {
+  margin-left: 10px;
+  color: white;
+  text-shadow: 0 0 10px black;
+  font-weight: bold;
+}
+
 .gameSubHeading {
   display: flex;
   margin: 0;

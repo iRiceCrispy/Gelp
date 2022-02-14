@@ -50,6 +50,9 @@ const GamePage = () => {
                 </span>
               );
             })}
+            <span className='numOfReviews'>
+              {reviews.length} {reviews.length === 1 ? 'Review' : 'Reviews'}
+            </span>
           </div>
           <div className='gameSubHeading'>
             <h2 className='gameOwner'>Created by: {game.owner.username}</h2>
