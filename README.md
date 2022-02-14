@@ -8,7 +8,8 @@ Its current features are:
   2. Viewing, creating, editing, and deleting game pages
   3. Viewing, creating, editing, and deleting game reviews
  
-More info can be found in the [Wiki](../../wiki)
+More info can be found in the [Wiki](../../wiki)\
+Hosted on Heroku: [Live Link](https://yelpforgames.herokuapp.com/)
 
 ## Steps to clone the app
 ### 1. Clone this repo in your project folder
