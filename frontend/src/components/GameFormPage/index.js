@@ -9,17 +9,18 @@ const GameFormPage = ({ edit }) => {
   const { gameId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const currentGame = useSelector(state => state.games[gameId]);
-  const [title, setTitle] = useState(edit ? currentGame.title : '');
-  const [description, setDescription] = useState(edit ? currentGame.description : '');
-  const [image, setImage] = useState(edit ? currentGame.image || '' : '');
-  const [url, setUrl] = useState(edit ? currentGame.url || '' : '');
-  const [downloadLink, setdownloadLink] = useState(edit ? currentGame.downloadLink || '' : '');
+  const [title, setTitle] = useState(edit ? currentGame?.title : '');
+  const [description, setDescription] = useState(edit ? currentGame?.description : '');
+  const [image, setImage] = useState(edit ? currentGame?.image || '' : '');
+  const [url, setUrl] = useState(edit ? currentGame?.url || '' : '');
+  const [downloadLink, setdownloadLink] = useState(edit ? currentGame?.downloadLink || '' : '');
   const [releaseDate, setReleaseDate] = useState(
-    edit ? currentGame.releaseDate || undefined : undefined
+    edit ? currentGame?.releaseDate || undefined : undefined
   );
   const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return <Redirect to='/login' />;
+  if (edit && !currentGame) return <Redirect to='/404' />;
 
   const handleSubmit = e => {
     e.preventDefault();

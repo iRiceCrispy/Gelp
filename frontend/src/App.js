@@ -11,6 +11,7 @@ import SignupFormPage from './components/SignupFormPage';
 import GameFormPage from './components/GameFormPage';
 import GamePage from './components/GamePage';
 import ReviewFormPage from './components/ReviewFormPage';
+import NotFound from './components/404';
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -67,7 +68,12 @@ function App() {
             <Navigation />
             <ReviewFormPage edit={true} />
           </Route>
-          <Route>404 not found</Route>
+          <Route path='/404'>
+            <NotFound />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
       </ScrollToTop>
     )

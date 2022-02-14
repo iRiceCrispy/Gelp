@@ -10,14 +10,15 @@ const ReviewFormPage = ({ edit }) => {
   const sessionUser = useSelector(state => state.session.user);
   const gameId = parseInt(useParams().gameId);
   const reviewId = parseInt(useParams().reviewId);
-  const currentReview = useSelector(state => state.reviews[reviewId]);
   const currentGame = useSelector(state => state.games[gameId]);
-  const [body, setBody] = useState(edit ? currentReview.body : '');
-  const [rating, setRating] = useState(edit ? currentReview.rating : 0);
+  const currentReview = useSelector(state => state.reviews[reviewId]);
+  const [body, setBody] = useState(edit ? currentReview?.body : '');
+  const [rating, setRating] = useState(edit ? currentReview?.rating : 0);
   const [hover, setHover] = useState(rating);
   const [errors, setErrors] = useState([]);
 
   if (!sessionUser) return <Redirect to='/login' />;
+  if ((!edit && !currentGame) || (edit && !currentReview)) return <Redirect to='/404' />;
 
   const handleSubmit = async e => {
     e.preventDefault();
