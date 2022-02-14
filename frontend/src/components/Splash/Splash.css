@@ -20,7 +20,8 @@
 }
 
 .bodyContainer {
-  margin: 25px auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,4 +32,5 @@
   color: #d32323;
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 30px;
 }

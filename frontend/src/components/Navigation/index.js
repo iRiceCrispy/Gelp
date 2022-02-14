@@ -10,8 +10,8 @@ const Navigation = () => {
     <nav className='nav'>
       <div className='navBar'>
         <div className='home'>
-          <Link className='navText' to='/'>
-            Home
+          <Link className='logo navText' to='/'>
+            <p>Gelp</p> <img src='/favicon.ico' alt='' />
           </Link>
         </div>
         <div className='options'>
@@ -25,13 +25,13 @@ const Navigation = () => {
           ) : (
             <ul>
               <li>
-                <Link className='navText' className='login' to='/login'>
-                  Login
+                <Link className='navText login' to='/login'>
+                  Log In
                 </Link>
               </li>
               <li>
-                <Link className='navText' className='logout' to='/signup'>
-                  Signup
+                <Link className='navText logout btn btnRed' to='/signup'>
+                  Sign Up
                 </Link>
               </li>
             </ul>

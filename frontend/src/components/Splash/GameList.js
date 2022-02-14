@@ -9,9 +9,9 @@ const GameList = () => {
   return (
     <div className='gameList'>
       {gameList.map(game => (
-        <NavLink key={game.id} to={`/games/${game.id}`}>
+        <NavLink className='gameContainer' key={game.id} to={`/games/${game.id}`}>
           <div
-            className='gameContainer'
+            className='gameImage'
             style={{
               backgroundImage: `url(${game.image || <></>})`,
             }}

@@ -20,6 +20,16 @@ nav * {
   vertical-align: middle;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo p {
+  font-size: 26px;
+  margin-right: 10px;
+}
+
 .userAuth ul {
   display: flex;
   justify-content: space-between;

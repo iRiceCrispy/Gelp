@@ -16,7 +16,7 @@ const Splash = () => {
         </div>
       </div>
       <div className='bodyContainer'>
-        <p>Find Games</p>
+        <p>Find the Best Games Online</p>
         <GameList />
       </div>
     </div>
