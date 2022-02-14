@@ -7,6 +7,10 @@
   border: none;
 }
 
+.profileButton:hover {
+  cursor: pointer;
+}
+
 .profileMenu {
   width: max-content;
   margin-top: 10px;

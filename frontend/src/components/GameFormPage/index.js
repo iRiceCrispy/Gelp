@@ -45,33 +45,38 @@ const GameFormPage = ({ edit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title
-        <input type='text' value={title} onChange={e => setTitle(e.target.value)} required />
-      </label>
-      <label>
-        Description
-        <textarea value={description} onChange={e => setDescription(e.target.value)} required />
-      </label>
-      <label>
-        Image
-        <input type='text' value={image} onChange={e => setImage(e.target.value)} />
-      </label>
-      <label>
-        URL
-        <input type='text' value={url} onChange={e => setUrl(e.target.value)} />
-      </label>
-      <label>
-        Download Link
-        <input type='text' value={downloadLink} onChange={e => setdownloadLink(e.target.value)} />
-      </label>
-      <label>
-        Release Date
-        <input type='date' value={releaseDate} onChange={e => setReleaseDate(e.target.value)} />
-      </label>
-      <button type='submit'>{edit ? 'Edit Game' : 'Add Game'}</button>
-    </form>
+    <div className='formContainer'>
+      <p className='formTitle'>{edit ? 'Edit Game' : 'Add Game'}</p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Title
+          <input type='text' value={title} onChange={e => setTitle(e.target.value)} required />
+        </label>
+        <label>
+          Description
+          <textarea value={description} onChange={e => setDescription(e.target.value)} required />
+        </label>
+        <label>
+          Image
+          <input type='text' value={image} onChange={e => setImage(e.target.value)} />
+        </label>
+        <label>
+          URL
+          <input type='text' value={url} onChange={e => setUrl(e.target.value)} />
+        </label>
+        <label>
+          Download Link
+          <input type='text' value={downloadLink} onChange={e => setdownloadLink(e.target.value)} />
+        </label>
+        <label>
+          Release Date
+          <input type='date' value={releaseDate} onChange={e => setReleaseDate(e.target.value)} />
+        </label>
+        <button type='submit' className='btn btnRed'>
+          {edit ? 'Edit Game' : 'Add Game'}
+        </button>
+      </form>
+    </div>
   );
 };
 

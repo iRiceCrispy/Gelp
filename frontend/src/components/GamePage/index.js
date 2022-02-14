@@ -10,8 +10,15 @@ const GamePage = () => {
   const { gameId } = useParams();
   const game = useSelector(state => state.games[gameId]);
   const sessionUser = useSelector(state => state.session.user);
+  const reviewsList = useSelector(state => state.reviews);
+  const reviews = Object.values(reviewsList)
+    .filter(review => review.gameId === game.id)
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
-  window.scrollTo(0, 0);
+  const getAvgReview = () => {
+    const avg = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+    return Math.floor(avg);
+  };
 
   const deleteGameEvent = async () => {
     await dispatch(deleteGame(gameId));
@@ -31,6 +38,18 @@ const GamePage = () => {
           ></div>
           <div className='gameHeading'>
             <h1 className='gameHeadingTitle'>{game.title}</h1>
+            <div className='averageRating'>
+              {[...Array(5)].map((star, i) => {
+                return (
+                  <span
+                    key={i}
+                    className={i < getAvgReview() ? `star starNum${getAvgReview()}` : 'star'}
+                  >
+                    <i className='fas fa-star'></i>
+                  </span>
+                );
+              })}
+            </div>
             <div className='gameSubHeading'>
               <h2 className='gameOwner'>Created by: {game.owner.username}</h2>
               {sessionUser?.id === game.ownerId && (
@@ -72,7 +91,7 @@ const GamePage = () => {
               )}
             </div>
           )}
-          <Reviews game={game} sessionUser={sessionUser} />
+          <Reviews reviews={reviews} sessionUser={sessionUser} />
         </div>
       </div>
     );

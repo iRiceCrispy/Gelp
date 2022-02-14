@@ -26,6 +26,11 @@
   justify-content: flex-end;
 }
 
+.averageRating {
+  margin: 0;
+  margin-left: 15px;
+}
+
 .gameSubHeading {
   display: flex;
   margin: 0;

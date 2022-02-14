@@ -4,7 +4,7 @@ import './GameList.css';
 
 const GameList = () => {
   const games = useSelector(state => state.games);
-  const gameList = Object.values(games);
+  const gameList = Object.values(games).sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className='gameList'>

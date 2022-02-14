@@ -1,16 +1,13 @@
-import { Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { deleteReview } from '../../store/revews';
 import './Reviews.css';
 
-const Reviews = ({ game, sessionUser }) => {
+const Reviews = ({ game, reviews, sessionUser }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const reviewsList = useSelector(state => state.reviews);
-  const reviews = Object.values(reviewsList).filter(review => review.gameId === game.id);
 
   const deleteReviewEvent = id => {
-    dispatch(deleteReview(id)).then(() => history.push(`/games/${game.id}`));
+    dispatch(deleteReview(id));
   };
 
   return (
