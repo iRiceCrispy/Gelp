@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { restoreUser } from './store/session';
 import { loadGames } from './store/games';
 import { loadReviews } from './store/revews';
@@ -13,9 +13,11 @@ import GamePage from './components/GamePage';
 import ReviewFormPage from './components/ReviewFormPage';
 
 const ScrollToTop = ({ children }) => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 };
