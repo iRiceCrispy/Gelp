@@ -11,4 +11,9 @@ module.exports = {
     secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_EXPIRES_IN,
   },
+  demo: {
+    username: process.env.DEMO_USERNAME || 'RiotGames',
+    email: process.env.DEMO_EMAIL || 'riotgames@riot.com',
+    password: process.env.DEMO_PASSWORD || 'password',
+  },
 };
