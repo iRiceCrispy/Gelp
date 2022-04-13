@@ -30,7 +30,7 @@ function SignupFormPage() {
       <p className='formTitle'>Sign Up</p>
       <form onSubmit={handleSubmit}>
         <label>
-          Username
+          Username *
           <input
             type='text'
             value={username}
@@ -39,7 +39,7 @@ function SignupFormPage() {
           <p className='error'>{errors.username}</p>
         </label>
         <label>
-          Email
+          Email *
           <input
             type='text'
             value={email}
@@ -48,7 +48,7 @@ function SignupFormPage() {
           <p className='error'>{errors.email}</p>
         </label>
         <label>
-          Password
+          Password *
           <input
             type='password'
             value={password}
@@ -57,7 +57,7 @@ function SignupFormPage() {
           <p className='error'>{errors.password}</p>
         </label>
         <label>
-          Confirm Password
+          Confirm Password *
           <input
             type='password'
             value={confirmPassword}

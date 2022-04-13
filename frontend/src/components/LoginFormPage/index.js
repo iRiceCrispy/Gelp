@@ -29,7 +29,7 @@ const LoginFormPage = () => {
           <p className='error'>{errors.login}</p>
         </div>
         <label>
-          Username/Email
+          Username/Email *
           <input
             type='text'
             value={credential}
@@ -38,7 +38,7 @@ const LoginFormPage = () => {
           <p className='error'>{errors.credential}</p>
         </label>
         <label>
-          Password
+          Password *
           <input
             type='password'
             value={password}

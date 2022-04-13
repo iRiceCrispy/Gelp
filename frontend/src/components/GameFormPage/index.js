@@ -60,12 +60,12 @@ const GameFormPage = ({ edit }) => {
       <p className='formTitle'>{edit ? 'Edit Game' : 'Add Game'}</p>
       <form onSubmit={handleSubmit}>
         <label>
-          Title
+          Title *
           <input type='text' value={title} onChange={e => setTitle(e.target.value)} />
           <p className='error'>{errors.title}</p>
         </label>
         <label>
-          Description
+          Description *
           <textarea value={description} onChange={e => setDescription(e.target.value)} />
           <p className='error'>{errors.description}</p>
         </label>
