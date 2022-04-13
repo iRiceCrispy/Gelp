@@ -17,13 +17,14 @@ const GameFormPage = ({ edit }) => {
   const [releaseDate, setReleaseDate] = useState(
     edit ? currentGame?.releaseDate || undefined : undefined
   );
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (!sessionUser) return <Redirect to='/login' />;
   if (edit && !currentGame) return <Redirect to='/404' />;
 
   const handleSubmit = e => {
     e.preventDefault();
+    setErrors({})
 
     if (!edit) {
       const game = {
@@ -58,18 +59,15 @@ const GameFormPage = ({ edit }) => {
     <div className='formContainer'>
       <p className='formTitle'>{edit ? 'Edit Game' : 'Add Game'}</p>
       <form onSubmit={handleSubmit}>
-        <ul className='errors'>
-          {errors.map((error, i) => (
-            <li key={i}>{error}</li>
-          ))}
-        </ul>
         <label>
-          Title
-          <input type='text' value={title} onChange={e => setTitle(e.target.value)} required />
+          Title *
+          <input type='text' value={title} onChange={e => setTitle(e.target.value)} />
+          <p className='error'>{errors.title}</p>
         </label>
         <label>
-          Description
-          <textarea value={description} onChange={e => setDescription(e.target.value)} required />
+          Description *
+          <textarea value={description} onChange={e => setDescription(e.target.value)} />
+          <p className='error'>{errors.description}</p>
         </label>
         <label>
           Image

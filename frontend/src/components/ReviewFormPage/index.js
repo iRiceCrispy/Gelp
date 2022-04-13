@@ -15,13 +15,14 @@ const ReviewFormPage = ({ edit }) => {
   const [body, setBody] = useState(edit ? currentReview?.body : '');
   const [rating, setRating] = useState(edit ? currentReview?.rating : 0);
   const [hover, setHover] = useState(rating);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (!sessionUser) return <Redirect to='/login' />;
   if ((!edit && !currentGame) || (edit && !currentReview)) return <Redirect to='/404' />;
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setErrors({})
 
     if (!edit) {
       const review = {
@@ -57,11 +58,6 @@ const ReviewFormPage = ({ edit }) => {
           : `Add Review for ${currentGame?.title || currentReview.game.title}`}
       </p>
       <form onSubmit={handleSubmit}>
-        <ul className='errors'>
-          {errors.map((error, i) => (
-            <li key={i}>{error}</li>
-          ))}
-        </ul>
         <div className='starRating'>
           {[...Array(5)].map((star, i) => {
             return (
@@ -76,9 +72,11 @@ const ReviewFormPage = ({ edit }) => {
               </span>
             );
           })}
+          <p className='error'>{errors.rating}</p>
         </div>
         <label>
-          <textarea value={body} onChange={e => setBody(e.target.value)} required />
+          <textarea value={body} onChange={e => setBody(e.target.value)} />
+          <p className='error'>{errors.body}</p>
         </label>
         <button type='submit' className='btn btnRed'>
           {edit ? 'Edit Review' : 'Add Review'}

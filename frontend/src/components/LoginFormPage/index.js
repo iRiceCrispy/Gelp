@@ -8,13 +8,13 @@ const LoginFormPage = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = e => {
     e.preventDefault();
-    setErrors([]);
+    setErrors({});
     return dispatch(login({ credential, password })).catch(async res => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
@@ -25,28 +25,26 @@ const LoginFormPage = () => {
     <div className='formContainer'>
       <p className='formTitle'>Log In</p>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        <div className='loginError'>
+          <p className='error'>{errors.login}</p>
+        </div>
         <label>
-          Username/Email
+          Username/Email *
           <input
             type='text'
             value={credential}
             onChange={e => setCredential(e.target.value)}
-            required
           />
+          <p className='error'>{errors.credential}</p>
         </label>
         <label>
-          Password
+          Password *
           <input
             type='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            required
           />
+          <p className='error'>{errors.password}</p>
         </label>
         <button type='submit' className='btn btnRed'>
           Login
