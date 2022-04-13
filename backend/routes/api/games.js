@@ -15,10 +15,12 @@ const validateGame = [
 ];
 
 const validateRating = [
-  check('body').exists({ checkFalsy: true }).withMessage('Please provide a valid review'),
+  check('body')
+    .isLength({min: 5 })
+    .withMessage('Please provide a meaningful review with at least 5 characters.'),
   check('rating')
-    .custom(value => value >= 1 && value <= 5)
-    .withMessage('Rating must be between 0 and 5 stars'),
+    .isInt({ min: 1, max: 5 })
+    .withMessage('Rating must be between 1 and 5 stars'),
   handleValidationErrors,
 ];
 

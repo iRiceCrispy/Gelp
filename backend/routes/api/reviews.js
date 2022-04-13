@@ -7,8 +7,12 @@ const { Game, Review, User } = require('../../db/models');
 const router = express.Router();
 
 const validateRating = [
-  check('body').exists({ checkFalsy: true }).withMessage('Please provide a valid review'),
-  check('rating').isNumeric({ min: 0, max: 5 }).withMessage('Rating must be between 0 and 5 stars'),
+  check('body')
+    .isLength({min: 5 })
+    .withMessage('Please provide a meaningful review with at least 5 characters.'),
+  check('rating')
+    .isInt({ min: 1, max: 5 })
+    .withMessage('Rating must be between 1 and 5 stars'),
   handleValidationErrors,
 ];
 

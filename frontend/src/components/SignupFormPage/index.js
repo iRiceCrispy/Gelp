@@ -10,46 +10,42 @@ function SignupFormPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = e => {
     e.preventDefault();
+    setErrors({});
 
-    if (password === confirmPassword) {
-      setErrors([]);
-
-      return dispatch(sessionActions.signup({ email, username, password })).catch(async res => {
+    return dispatch(sessionActions.signup({ email, username, password, confirmPassword }))
+      .catch(async res => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-    }
-
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
     <div className='formContainer'>
       <p className='formTitle'>Sign Up</p>
       <form onSubmit={handleSubmit}>
-        <ul className='errors'>
-          {errors.map((error, i) => (
-            <li key={i}>{error}</li>
-          ))}
-        </ul>
         <label>
           Username
           <input
             type='text'
             value={username}
             onChange={e => setUsername(e.target.value)}
-            required
           />
+          <p className='error'>{errors.username}</p>
         </label>
         <label>
           Email
-          <input type='text' value={email} onChange={e => setEmail(e.target.value)} required />
+          <input
+            type='text'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <p className='error'>{errors.email}</p>
         </label>
         <label>
           Password
@@ -57,8 +53,8 @@ function SignupFormPage() {
             type='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            required
           />
+          <p className='error'>{errors.password}</p>
         </label>
         <label>
           Confirm Password
@@ -66,8 +62,8 @@ function SignupFormPage() {
             type='password'
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
-            required
           />
+          <p className='error'>{errors.confirmPassword}</p>
         </label>
         <button type='submit' className='btn btnRed'>
           Sign Up
