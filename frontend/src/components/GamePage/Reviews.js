@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteReview } from '../../store/revews';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Reviews.css';
 
 const Reviews = ({ game, reviews, sessionUser }) => {
@@ -24,7 +25,7 @@ const Reviews = ({ game, reviews, sessionUser }) => {
                     key={i}
                     className={i < review.rating ? `star starNum${review.rating}` : 'star'}
                   >
-                    <i className='fas fa-star'></i>
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
                   </span>
                 );
               })}

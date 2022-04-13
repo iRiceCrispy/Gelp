@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ProfileButton.css';
 
 const DropDownMenu = () => {
@@ -36,7 +37,7 @@ const ProfileButton = () => {
   return (
     <div className='profile'>
       <button className='profileButton navText' onClick={() => !showMenu && setShowMenu(true)}>
-        <i className='fas fa-user-circle fa-2x'></i>
+        <FontAwesomeIcon className='icon' icon="fa-solid fa-circle-user" />
       </button>
       {showMenu && <DropDownMenu />}
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview, editReview } from '../../store/revews';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ReviewFormPage.css';
 
 const ReviewFormPage = ({ edit }) => {
@@ -68,7 +69,7 @@ const ReviewFormPage = ({ edit }) => {
                 onMouseEnter={() => setHover(i + 1)}
                 onMouseLeave={() => setHover(rating)}
               >
-                <i className='fas fa-star'></i>
+                <FontAwesomeIcon icon="fa-solid fa-star" />
               </span>
             );
           })}

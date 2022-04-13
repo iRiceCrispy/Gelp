@@ -2,6 +2,7 @@ import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteGame } from '../../store/games';
 import Reviews from './Reviews.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './GamePage.css';
 
 const GamePage = () => {
@@ -46,7 +47,7 @@ const GamePage = () => {
                   key={i}
                   className={i < getAvgReview() ? `star starNum${getAvgReview()}` : 'star'}
                 >
-                  <i className='fas fa-star'></i>
+                  <FontAwesomeIcon icon="fa-solid fa-star" />
                 </span>
               );
             })}
