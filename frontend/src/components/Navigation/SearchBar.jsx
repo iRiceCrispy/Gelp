@@ -5,7 +5,11 @@ import { useSelector } from 'react-redux';
 const SearchBar = () => {
   const history = useHistory();
   const [input, setInput] = useState('');
-  const games = useSelector(state => state.games);
+  const games = Object.values(useSelector(state => state.games));
+
+  const results = games
+    .filter(game => game.title.toLowerCase().includes(input.toLowerCase())
+      || game.description.toLowerCase().includes(input.toLowerCase()));
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -13,6 +17,7 @@ const SearchBar = () => {
     history.push({
       pathname: '/search',
       search: `?q=${input}`,
+      state: { results },
     });
 
     setInput('');
