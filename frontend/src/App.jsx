@@ -6,6 +6,7 @@ import { loadGames } from './store/games';
 import { loadReviews } from './store/revews';
 import Splash from './components/Splash';
 import Navigation from './components/Navigation';
+import SearchResults from './components/SearchResults';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import GameFormPage from './components/GameFormPage';
@@ -47,6 +48,10 @@ const App = () => {
           <Route path='/signup'>
             <Navigation />
             <SignupFormPage />
+          </Route>
+          <Route path='/search'>
+            <Navigation />
+            <SearchResults />
           </Route>
           <Route path='/games/add'>
             <Navigation />

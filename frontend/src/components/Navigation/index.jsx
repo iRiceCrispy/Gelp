@@ -1,5 +1,6 @@
 import React, { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
@@ -14,6 +15,9 @@ const Navigation = () => {
             <p>Gelp</p>
             <img src='/favicon.ico' alt='' />
           </Link>
+        </div>
+        <div className='searchbar'>
+          <SearchBar />
         </div>
         <div className='options'>
           <Link className='navText' to='/games/add'>

@@ -49,3 +49,7 @@ nav * {
 .login {
   margin-right: 25px;
 }
+
+.searchForm {
+  all: unset;
+}
