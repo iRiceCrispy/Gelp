@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteReview } from '../../store/revews';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { deleteReview } from '../../store/revews';
 import './Reviews.css';
 
 const Reviews = ({ game, reviews, sessionUser }) => {
@@ -17,18 +18,20 @@ const Reviews = ({ game, reviews, sessionUser }) => {
       {reviews.length ? (
         reviews.map(review => (
           <div key={review.id} className='review'>
-            <p className='reviewUser'>User: {review.user.username}</p>
+            <p className='reviewUser'>
+              User:
+              {' '}
+              {review.user.username}
+            </p>
             <div className='reviewRating'>
-              {[...Array(5)].map((star, i) => {
-                return (
-                  <span
-                    key={i}
-                    className={i < review.rating ? `star starNum${review.rating}` : 'star'}
-                  >
-                    <FontAwesomeIcon icon="fa-solid fa-star" />
-                  </span>
-                );
-              })}
+              {[...Array(5)].map((star, i) => (
+                <span
+                  key={i}
+                  className={i < review.rating ? `star starNum${review.rating}` : 'star'}
+                >
+                  <FontAwesomeIcon icon='fa-solid fa-star' />
+                </span>
+              ))}
             </div>
             <p className='reviewBody'>{review.body}</p>
             {sessionUser?.id === review.userId && (

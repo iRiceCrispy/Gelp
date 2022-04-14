@@ -73,20 +73,22 @@ export const deleteGame = id => async dispatch => {
 const gamesReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
-      const games = {};
       action.games.forEach(game => {
-        games[game.id] = game;
+        state[game.id] = game;
       });
-      state = games;
-      return { ...state };
+
+      return state;
     case ADD:
       state[action.game.id] = action.game;
+
       return { ...state };
     case EDIT:
       state[action.game.id] = { ...state[action.game.id], ...action.game };
+
       return { ...state };
     case REMOVE:
       delete state[action.id];
+
       return { ...state };
     default:
       return state;

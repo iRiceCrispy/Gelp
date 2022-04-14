@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
-function SignupFormPage() {
+const SignupFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
@@ -71,6 +71,6 @@ function SignupFormPage() {
       </form>
     </div>
   );
-}
+};
 
 export default SignupFormPage;

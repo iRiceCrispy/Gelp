@@ -20,10 +20,10 @@ const ScrollToTop = ({ children }) => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return <>{children}</>;
+  return children;
 };
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -58,7 +58,7 @@ function App() {
           </Route>
           <Route path={'/games/:gameId(\\d+)/edit'}>
             <Navigation />
-            <GameFormPage edit={true} />
+            <GameFormPage edit />
           </Route>
           <Route path={'/games/:gameId(\\d+)/reviews/add'}>
             <Navigation />
@@ -66,7 +66,7 @@ function App() {
           </Route>
           <Route path={'/reviews/:reviewId(\\d+)/edit'}>
             <Navigation />
-            <ReviewFormPage edit={true} />
+            <ReviewFormPage edit />
           </Route>
           <Route path='/404'>
             <NotFound />
@@ -78,6 +78,6 @@ function App() {
       </ScrollToTop>
     )
   );
-}
+};
 
 export default App;

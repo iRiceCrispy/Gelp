@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview, editReview } from '../../store/revews';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { addReview, editReview } from '../../store/revews';
 import './ReviewFormPage.css';
 
 const ReviewFormPage = ({ edit }) => {
@@ -23,7 +23,7 @@ const ReviewFormPage = ({ edit }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setErrors({})
+    setErrors({});
 
     if (!edit) {
       const review = {
@@ -39,16 +39,15 @@ const ReviewFormPage = ({ edit }) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
-    } else {
-      const review = { ...currentReview, body, rating };
-
-      return dispatch(editReview(review))
-        .then(() => history.push(`/games/${review.gameId}`))
-        .catch(async res => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
     }
+    const review = { ...currentReview, body, rating };
+
+    return dispatch(editReview(review))
+      .then(() => history.push(`/games/${review.gameId}`))
+      .catch(async res => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
@@ -60,19 +59,17 @@ const ReviewFormPage = ({ edit }) => {
       </p>
       <form onSubmit={handleSubmit}>
         <div className='starRating'>
-          {[...Array(5)].map((star, i) => {
-            return (
-              <span
-                key={i}
-                className={i < (hover || rating) ? `star starNum${hover}` : 'star'}
-                onClick={() => setRating(i + 1)}
-                onMouseEnter={() => setHover(i + 1)}
-                onMouseLeave={() => setHover(rating)}
-              >
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-              </span>
-            );
-          })}
+          {[...Array(5)].map((star, i) => (
+            <span
+              key={i}
+              className={i < (hover || rating) ? `star starNum${hover}` : 'star'}
+              onClick={() => setRating(i + 1)}
+              onMouseEnter={() => setHover(i + 1)}
+              onMouseLeave={() => setHover(rating)}
+            >
+              <FontAwesomeIcon icon='fa-solid fa-star' />
+            </span>
+          ))}
           <p className='error'>{errors.rating}</p>
         </div>
         <label>

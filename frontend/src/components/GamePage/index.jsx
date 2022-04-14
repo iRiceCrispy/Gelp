@@ -1,8 +1,9 @@
+import React from 'react';
 import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteGame } from '../../store/games';
-import Reviews from './Reviews.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { deleteGame } from '../../store/games';
+import Reviews from './Reviews';
 import './GamePage.css';
 
 const GamePage = () => {
@@ -35,28 +36,32 @@ const GamePage = () => {
         <div
           className='gameHeadingImage'
           style={{
-            backgroundImage: `url(${game.image || <></>})`,
+            backgroundImage: `url(${game.image || null})`,
           }}
-        ></div>
+        />
         <div className='gameHeading'>
           <h1 className='gameHeadingTitle'>{game.title}</h1>
           <div className='averageRating'>
-            {[...Array(5)].map((star, i) => {
-              return (
-                <span
-                  key={i}
-                  className={i < getAvgReview() ? `star starNum${getAvgReview()}` : 'star'}
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-star" />
-                </span>
-              );
-            })}
+            {[...Array(5)].map((star, i) => (
+              <span
+                key={i}
+                className={i < getAvgReview() ? `star starNum${getAvgReview()}` : 'star'}
+              >
+                <FontAwesomeIcon icon='fa-solid fa-star' />
+              </span>
+            ))}
             <span className='numOfReviews'>
-              {reviews.length} {reviews.length === 1 ? 'Review' : 'Reviews'}
+              {reviews.length}
+              {' '}
+              {reviews.length === 1 ? 'Review' : 'Reviews'}
             </span>
           </div>
           <div className='gameSubHeading'>
-            <h2 className='gameOwner'>Created by: {game.owner.username}</h2>
+            <h2 className='gameOwner'>
+              Created by:
+              {' '}
+              {game.owner.username}
+            </h2>
             {sessionUser?.id === game.ownerId && (
               <div className='gameButtonContainer'>
                 <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
@@ -75,7 +80,9 @@ const GamePage = () => {
       </div>
       <div className='gameDetails'>
         <h2 className='about'>
-          About the game: <p>{game.description}</p>
+          About the game:
+          {' '}
+          <p>{game.description}</p>
         </h2>
         {(game.url || game.downloadLink || game.releaseDate) && (
           <div className='details'>
@@ -91,7 +98,11 @@ const GamePage = () => {
             )}
             {game.releaseDate && (
               <div>
-                <p>Release date: {game.releaseDate}</p>
+                <p>
+                  Release date:
+                  {' '}
+                  {game.releaseDate}
+                </p>
               </div>
             )}
           </div>

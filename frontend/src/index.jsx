@@ -21,15 +21,13 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions;
 }
 
-function Root() {
-  return (
-    <ReduxProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ReduxProvider>
-  );
-}
+const Root = () => (
+  <ReduxProvider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ReduxProvider>
+);
 
 ReactDOM.render(
   <React.StrictMode>

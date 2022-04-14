@@ -71,11 +71,10 @@ export const deleteReview = id => async dispatch => {
 const reviewsReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
-      const reviews = {};
       action.reviews.forEach(review => {
-        reviews[review.id] = review;
+        state[review.id] = review;
       });
-      return reviews;
+      return state;
     case ADD:
       state[action.review.id] = action.review;
       return { ...state };

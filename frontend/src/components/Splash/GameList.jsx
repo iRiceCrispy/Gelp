@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './GameList.css';
@@ -13,9 +14,9 @@ const GameList = () => {
           <div
             className='gameImage'
             style={{
-              backgroundImage: `url(${game.image || <></>})`,
+              backgroundImage: `url(${game.image || null})`,
             }}
-          ></div>
+          />
           <p className='gameTitle'>{game.title}</p>
         </NavLink>
       ))}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame, editGame } from '../../store/games';
@@ -24,7 +24,7 @@ const GameFormPage = ({ edit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setErrors({})
+    setErrors({});
 
     if (!edit) {
       const game = {
@@ -43,16 +43,15 @@ const GameFormPage = ({ edit }) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
-    } else {
-      const game = { ...currentGame, title, description, url, image, downloadLink, releaseDate };
-
-      return dispatch(editGame(game))
-        .then(() => history.push('.'))
-        .catch(async res => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
     }
+    const game = { ...currentGame, title, description, url, image, downloadLink, releaseDate };
+
+    return dispatch(editGame(game))
+      .then(() => history.push('.'))
+      .catch(async res => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
