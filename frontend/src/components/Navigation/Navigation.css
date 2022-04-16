@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 84px;
 }
 
 nav * {
@@ -48,8 +48,4 @@ nav * {
 
 .login {
   margin-right: 25px;
-}
-
-.searchForm {
-  all: unset;
 }
