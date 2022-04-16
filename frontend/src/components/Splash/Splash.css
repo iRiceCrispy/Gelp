@@ -2,13 +2,13 @@
   width: 100%;
   height: 600px;
   background-size: cover;
-  display: flex;
-  justify-content: center;
+  padding-top: 36px;
 }
 
 .innerHeadContainer {
-  margin-top: 25px;
   width: 50%;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .innerHeadContainer .navText {
@@ -17,6 +17,24 @@
   font-weight: bold;
   text-shadow: 0 0 5px black;
   text-decoration: none;
+}
+
+.innerHeadContainer .userAuth {
+  text-align: end;
+}
+
+.innerHeadContainer .home {
+  margin-top: 84px;
+  margin-bottom: 48px;
+  width: fit-content;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
 .bodyContainer {
@@ -28,7 +46,7 @@
   width: 50%;
 }
 
-.bodyContainer>p {
+.bodyContainer > p {
   color: #d32323;
   font-size: 24px;
   font-weight: 700;
