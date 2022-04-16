@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { restoreUser } from './store/session';
 import { loadGames } from './store/games';
 import { loadReviews } from './store/revews';
@@ -24,6 +24,15 @@ const ScrollToTop = ({ children }) => {
   return children;
 };
 
+const NavWrapper = ({ children }) => (
+  <>
+    <Navigation />
+    <main>
+      {children}
+    </main>
+  </>
+);
+
 const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,51 +45,49 @@ const App = () => {
 
   return (
     isLoaded && (
-      <ScrollToTop>
+      <div className='app'>
         <Switch>
           <Route exact path='/'>
             <Splash />
           </Route>
-          <Route path='/login'>
-            <Navigation />
-            <LoginFormPage />
-          </Route>
-          <Route path='/signup'>
-            <Navigation />
-            <SignupFormPage />
-          </Route>
-          <Route path='/search'>
-            <Navigation />
-            <SearchResults />
-          </Route>
-          <Route path='/games/add'>
-            <Navigation />
-            <GameFormPage edit={false} />
-          </Route>
-          <Route exact path={'/games/:gameId(\\d+)'}>
-            <Navigation />
-            <GamePage />
-          </Route>
-          <Route path={'/games/:gameId(\\d+)/edit'}>
-            <Navigation />
-            <GameFormPage edit />
-          </Route>
-          <Route path={'/games/:gameId(\\d+)/reviews/add'}>
-            <Navigation />
-            <ReviewFormPage edit={false} />
-          </Route>
-          <Route path={'/reviews/:reviewId(\\d+)/edit'}>
-            <Navigation />
-            <ReviewFormPage edit />
-          </Route>
-          <Route path='/404'>
-            <NotFound />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
+          <ScrollToTop>
+            <NavWrapper>
+              <Switch>
+                <Route exact path='/login'>
+                  <LoginFormPage />
+                </Route>
+                <Route exact path='/signup'>
+                  <SignupFormPage />
+                </Route>
+                <Route exact path='/search'>
+                  <SearchResults />
+                </Route>
+                <Route exact path='/games/add'>
+                  <GameFormPage edit={false} />
+                </Route>
+                <Route exact path={'/games/:gameId(\\d+)'}>
+                  <GamePage />
+                </Route>
+                <Route exact path={'/games/:gameId(\\d+)/edit'}>
+                  <GameFormPage edit />
+                </Route>
+                <Route exact path={'/games/:gameId(\\d+)/reviews/add'}>
+                  <ReviewFormPage edit={false} />
+                </Route>
+                <Route exact path={'/reviews/:reviewId(\\d+)/edit'}>
+                  <ReviewFormPage edit />
+                </Route>
+                <Route exact path='/404'>
+                  <NotFound />
+                </Route>
+                <Route>
+                  <Redirect to='/404' />
+                </Route>
+              </Switch>
+            </NavWrapper>
+          </ScrollToTop>
         </Switch>
-      </ScrollToTop>
+      </div>
     )
   );
 };
