@@ -8,10 +8,20 @@ const SearchBar = () => {
   const history = useHistory();
   const [input, setInput] = useState('');
   const games = Object.values(useSelector(state => state.games));
+  const reviews = Object.values(useSelector(state => state.reviews));
 
-  const results = games
-    .filter(game => game.title.toLowerCase().includes(input.toLowerCase())
-      || game.description.toLowerCase().includes(input.toLowerCase()));
+  const results = input
+    ? games
+      .filter(game => game.title.toLowerCase().includes(input.toLowerCase())
+      || game.description.toLowerCase().includes(input.toLowerCase()))
+      .map(game => {
+        const revs = reviews.filter(review => review.gameId === game.id);
+        const avgRating = revs.reduce((sum, review) => sum + review.rating, 0) / revs.length;
+        game.rating = Math.floor(avgRating);
+        game.totalOfReviews = revs.length;
+        return game;
+      })
+    : [];
 
   const handleSubmit = e => {
     e.preventDefault();

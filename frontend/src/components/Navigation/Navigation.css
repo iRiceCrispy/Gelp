@@ -3,6 +3,7 @@ nav {
   justify-content: center;
   align-items: center;
   height: 84px;
+  border-bottom: 1px solid #ebebeb;
 }
 
 nav * {
