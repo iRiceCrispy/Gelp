@@ -1,0 +1,73 @@
+.auth {
+  display: flex;
+  height: 750px;
+
+  .left,
+  .right {
+    width: 50%;
+    height: 100%;
+  }
+
+  .left {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5%;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+  }
+
+  .formContainer {
+    margin-top: 150px;
+    width: 300px;
+
+    .formHeading {
+      color: var(--color-base);
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  .imageContainer img {
+    width: 450px;
+    height: 450px;
+  }
+
+  .redirect {
+    margin-top: 12px;
+    font-size: 12px;
+    text-align: right;
+    color: var(--color-text2);
+
+    a {
+      color: var(--color-text3);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.auth.login {
+  .orLine {
+    margin: 12px 0;
+    padding: 0;
+    border: none;
+    border-top: 1px solid var(--color-text2);
+    text-align: center;
+
+    legend {
+      padding: 0 12px;
+      color: var(--color-text2);
+    }
+  }
+}

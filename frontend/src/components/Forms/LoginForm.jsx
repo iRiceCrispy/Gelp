@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login, demoLogin } from '../../store/session';
+import './forms.scss';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,33 +21,40 @@ const LoginForm = () => {
 
   return (
     <form className='loginForm' onSubmit={handleSubmit}>
-      <div className='loginError'>
-        <p className='error'>{errors.login}</p>
-      </div>
-      <label>
-        Username/Email *
-        <input
-          type='text'
-          value={credential}
-          onChange={e => setCredential(e.target.value)}
-        />
-        <p className='error'>{errors.credential}</p>
-      </label>
-      <label>
-        Password *
-        <input
-          type='password'
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <p className='error'>{errors.password}</p>
-      </label>
-      <button type='submit' className='btn btnRed'>
-        Login
-      </button>
-      <button type='button' className='btn' onClick={() => dispatch(demoLogin())}>
-        Login as demo
-      </button>
+      <main>
+        <div className='loginError'>
+          <p className='error'>{errors.login}</p>
+        </div>
+        <div className='input credential'>
+          <input
+            type='text'
+            value={credential}
+            placeholder='Username or Email'
+            onChange={e => setCredential(e.target.value)}
+          />
+          <p className='error'>{errors.credential}</p>
+        </div>
+        <div className='input password'>
+          <input
+            type='password'
+            value={password}
+            placeholder='Password'
+            onChange={e => setPassword(e.target.value)}
+          />
+          <p className='error'>{errors.password}</p>
+        </div>
+      </main>
+      <footer>
+        <button type='submit' className='btn btnRed'>
+          Login
+        </button>
+        <fieldset className='orLine'>
+          <legend align='center'>OR</legend>
+        </fieldset>
+        <button type='button' className='btn btnRed' onClick={() => dispatch(demoLogin())}>
+          Login as Demo
+        </button>
+      </footer>
     </form>
   );
 };

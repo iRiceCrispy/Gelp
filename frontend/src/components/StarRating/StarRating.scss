@@ -11,22 +11,22 @@
   }
 
   .starNum1 {
-    background-color: #f27e00;
+    background-color: var(--color-star-1);
   }
 
   .starNum2 {
-    background-color: #fbc418;
+    background-color: var(--color-star-2);
   }
 
   .starNum3 {
-    background-color: #ff8b00;
+    background-color: var(--color-star-3);
   }
 
   .starNum4 {
-    background-color: #ff3b00;
+    background-color: var(--color-star-4);
   }
 
   .starNum5 {
-    background-color: #f20008;
+    background-color: var(--color-star-5);
   }
 }

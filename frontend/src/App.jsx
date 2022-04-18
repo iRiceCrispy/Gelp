@@ -5,10 +5,9 @@ import { restoreUser } from './store/session';
 import { loadGames } from './store/games';
 import { loadReviews } from './store/revews';
 import Splash from './components/Splash';
+import Auth from './components/Auth';
 import Navigation from './components/Navigation';
 import SearchResults from './components/SearchResults';
-import LoginFormPage from './components/LoginFormPage';
-import SignupFormPage from './components/SignupFormPage';
 import GameFormPage from './components/GameFormPage';
 import GamePage from './components/GamePage';
 import ReviewFormPage from './components/ReviewFormPage';
@@ -52,10 +51,10 @@ const App = () => {
             <NavWrapper>
               <Switch>
                 <Route exact path='/login'>
-                  <LoginFormPage />
+                  <Auth type='login' />
                 </Route>
                 <Route exact path='/signup'>
-                  <SignupFormPage />
+                  <Auth type='signup' />
                 </Route>
                 <Route exact path='/search'>
                   <SearchResults />

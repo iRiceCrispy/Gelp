@@ -1,3 +1,16 @@
+:root {
+  --color-base: #d32323;
+  --color-text: white;
+  --color-text2: #666;
+  --color-text3: #0073bb;
+  --color-border: #e6e6e6;
+  --color-star-1: #f27e00;
+  --color-star-2: #fbc418;
+  --color-star-3: #ff8b00;
+  --color-star-4: #ff3b00;
+  --color-star-5: #f20008;
+}
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
@@ -13,54 +26,8 @@ a {
   text-decoration: none;
 }
 
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: lightgray;
-  height: 100vh;
-}
-
-.formTitle {
-  margin: 50px auto;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.error {
-  margin: 2px 0 0;
-  color: red;
-  font-size: 13px;
-}
-
-form {
-  width: fit-content;
-  padding: 50px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5%;
-  background-color: white;
-}
-
-label {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  width: 450px;
-  margin-top: 10px;
-}
-
-textarea {
-  width: 450px;
-  height: 150px;
-  margin-top: 10px;
-}
-
 .btn {
+  cursor: pointer;
   text-decoration: none;
   font-size: 15px;
   border-radius: 4px;
@@ -71,12 +38,8 @@ textarea {
   border: 1px solid gray;
 }
 
-.formContainer .btn {
-  margin: 8px;
-}
-
 .btn:hover {
-  cursor: pointer;
+  opacity: 0.75;
 }
 
 .btnLight {
@@ -86,7 +49,7 @@ textarea {
 
 .btnRed {
   color: white;
-  background-color: #e00707;
+  background-color: var(--color-base);
   border: none;
 }
 
