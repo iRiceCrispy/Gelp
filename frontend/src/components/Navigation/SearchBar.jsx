@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './SearchBar.css';
+import './SearchBar.scss';
 
 const SearchBar = () => {
   const history = useHistory();
@@ -41,12 +41,12 @@ const SearchBar = () => {
         className='searchForm'
         onSubmit={handleSubmit}
       >
-        <div className='searchContainer'>
+        <div className='searchbar'>
           <div className='inputContainer'>
             <input type='text' value={input} onChange={e => setInput(e.target.value)} />
           </div>
           {input && results.length > 0 && (
-            <div className='resultsContainer'>
+            <div className='results'>
               {results.map(result => (
                 <div
                   className='result'

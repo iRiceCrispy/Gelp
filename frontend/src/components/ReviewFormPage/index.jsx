@@ -3,7 +3,7 @@ import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addReview, editReview } from '../../store/revews';
-import './ReviewFormPage.css';
+import './ReviewFormPage.scss';
 
 const ReviewFormPage = ({ edit }) => {
   const dispatch = useDispatch();

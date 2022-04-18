@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './GameList.css';
+import noImage from '../../assets/no-image.png';
+import './GameList.scss';
 
 const GameList = () => {
   const games = useSelector(state => state.games);
@@ -10,14 +11,9 @@ const GameList = () => {
   return (
     <div className='gameList'>
       {gameList.map(game => (
-        <NavLink className='gameContainer' key={game.id} to={`/games/${game.id}`}>
-          <div
-            className='gameImage'
-            style={{
-              backgroundImage: `url(${game.image || null})`,
-            }}
-          />
-          <p className='gameTitle'>{game.title}</p>
+        <NavLink className='gameCard' key={game.id} to={`/games/${game.id}`}>
+          <img className={game.image ? 'image' : 'noImage'} src={game.image || noImage} alt={game.title} />
+          <p className='title'>{game.title}</p>
         </NavLink>
       ))}
     </div>

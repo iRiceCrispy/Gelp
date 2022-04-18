@@ -1,0 +1,32 @@
+.starRating {
+  font-size: 14px;
+  display: flex;
+  gap: 0.2em;
+
+  .star {
+    color: white;
+    background-color: gray;
+    border-radius: 4px;
+    padding: 0.25em;
+  }
+
+  .starNum1 {
+    background-color: #f27e00;
+  }
+
+  .starNum2 {
+    background-color: #fbc418;
+  }
+
+  .starNum3 {
+    background-color: #ff8b00;
+  }
+
+  .starNum4 {
+    background-color: #ff3b00;
+  }
+
+  .starNum5 {
+    background-color: #f20008;
+  }
+}

@@ -1,0 +1,33 @@
+.gameList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 45px;
+
+  .gameCard {
+    text-decoration: none;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+
+    img {
+      width: 300px;
+      height: 150px;
+      background-color: gray;
+      border-radius: 3px 3px 0 0;
+    }
+
+    img.image {
+      object-fit: cover;
+    }
+
+    img.noImage {
+      object-fit: contain;
+    }
+
+    .title {
+      color: black;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+    }
+  }
+}

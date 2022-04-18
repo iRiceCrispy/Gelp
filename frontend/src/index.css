@@ -1,14 +1,16 @@
 * {
   box-sizing: border-box;
   font-family: sans-serif;
+  color: inherit;
+  background-color: inherit;
 }
 
 body {
   margin: 0;
 }
 
-body * {
-  margin: 0 auto;
+a {
+  text-decoration: none;
 }
 
 .formContainer {
@@ -63,8 +65,6 @@ textarea {
   font-size: 15px;
   border-radius: 4px;
   padding: 8px 10.4px;
-  margin-left: 8px;
-  margin-right: 8px;
   color: black;
   background-color: transparent;
   box-shadow: none;

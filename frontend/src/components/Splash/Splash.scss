@@ -1,0 +1,54 @@
+#home {
+  header {
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-image: url(https://thenerdstash.com/wp-content/uploads/2015/10/Project-Zomboid.png);
+    padding-top: 36px;
+
+    .content {
+      margin: 0 auto;
+      min-width: fit-content;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .userAuth {
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      text-align: end;
+    }
+
+    .home {
+      margin-top: 84px;
+      margin-bottom: 48px;
+      width: fit-content;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  main {
+    margin: 30px auto 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+    h2 {
+      color: #d32323;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+  }
+}

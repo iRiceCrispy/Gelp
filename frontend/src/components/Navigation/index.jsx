@@ -2,16 +2,16 @@ import React, { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import './Navigation.scss';
 
 const Navigation = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <nav className='nav'>
+    <nav>
       <div className='navBar'>
         <div className='home'>
-          <Link className='logo navText' to='/'>
+          <Link className='logo' to='/'>
             <p>Gelp</p>
             <img src='/favicon.ico' alt='' />
           </Link>

@@ -1,0 +1,25 @@
+.review {
+  padding: 16px;
+  padding-left: 0;
+  width: 100%;
+
+  .user {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    font-weight: 550;
+  }
+
+  .body {
+    margin-top: 25px;
+    text-align: justify;
+  }
+
+  .buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+  }
+}

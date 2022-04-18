@@ -4,29 +4,24 @@ import { useSelector } from 'react-redux';
 import SearchBar from '../Navigation/SearchBar';
 import ProfileButton from '../Navigation/ProfileButton';
 import GameList from './GameList';
-import './Splash.css';
+import './Splash.scss';
 
 const Splash = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <div className='mainContainer'>
-      <div
-        className='headContainer'
-        style={{
-          backgroundImage: 'url(\'https://thenerdstash.com/wp-content/uploads/2015/10/Project-Zomboid.png\')',
-        }}
-      >
-        <div className='innerHeadContainer'>
+    <div id='home'>
+      <header>
+        <div className='content'>
           <div className='userAuth'>
             {sessionUser ? (
               <ProfileButton />
             ) : (
               <>
-                <Link className='navText login' to='/login'>
+                <Link className='login' to='/login'>
                   Log In
                 </Link>
-                <Link className='navText logout btn btnRed' to='/signup'>
+                <Link className='logout btn btnRed' to='/signup'>
                   Sign Up
                 </Link>
               </>
@@ -40,11 +35,11 @@ const Splash = () => {
             <SearchBar />
           </div>
         </div>
-      </div>
-      <div className='bodyContainer'>
-        <p>Find the Best Games Online</p>
+      </header>
+      <main>
+        <h2>Find the Best Games Online</h2>
         <GameList />
-      </div>
+      </main>
     </div>
   );
 };

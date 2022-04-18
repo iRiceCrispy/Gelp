@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './SearchResults.css';
+import noImage from '../../assets/no-image.png';
+import StarRating from '../StarRating';
+import './SearchResults.scss';
 
 const SearchResults = () => {
   const location = useLocation();
@@ -13,15 +14,13 @@ const SearchResults = () => {
     history.push(`/games/${id}`);
   };
 
-  console.log(results);
-
   return (
     <div className='searchResults'>
       {results.length
         ? results.map((result, i) => (
           <div className='resultCard' key={result.id} onClick={() => redirect(result.id)}>
             <div className='photo'>
-              <img src={result.image} alt={result.title} />
+              <img src={result.image || noImage} alt={result.title} />
             </div>
             <div className='details'>
               <p className='title'>
@@ -29,16 +28,10 @@ const SearchResults = () => {
                 {'. '}
                 {result.title}
               </p>
-              <p className='rating'>
-                {[...Array(5)].map((star, j) => (
-                  <FontAwesomeIcon
-                    key={j}
-                    className={j < result.rating ? `star starNum${result.rating}` : 'star'}
-                    icon='fa-solid fa-star'
-                  />
-                ))}
+              <div className='rating'>
+                <StarRating rating={result.rating} />
                 <span>{result.totalOfReviews}</span>
-              </p>
+              </div>
               <p>{result.description}</p>
             </div>
           </div>

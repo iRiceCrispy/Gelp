@@ -1,0 +1,50 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 84px;
+  border-bottom: 1px solid #ebebeb;
+
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+
+    .navText {
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 0 2px gray;
+    }
+
+    .home {
+      vertical-align: middle;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-shadow: none;
+    }
+
+    .logo p {
+      color: #d32323;
+      font-size: 26px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .userAuth ul {
+      list-style-type: none;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .login {
+      margin-right: 25px;
+    }
+  }
+}

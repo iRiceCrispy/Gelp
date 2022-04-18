@@ -27,9 +27,7 @@ const ScrollToTop = ({ children }) => {
 const NavWrapper = ({ children }) => (
   <>
     <Navigation />
-    <main>
-      {children}
-    </main>
+    {children}
   </>
 );
 

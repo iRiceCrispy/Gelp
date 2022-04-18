@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteGame } from '../../store/games';
-import Reviews from './Reviews';
-import './GamePage.css';
+import StarRating from '../StarRating';
+import Review from './Review';
+import noImage from '../../assets/no-image.png';
+import './GamePage.scss';
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -31,84 +32,93 @@ const GamePage = () => {
   };
 
   return (
-    <div className='gamePage'>
-      <div className='gameHeadingContainer'>
-        <div
-          className='gameHeadingImage'
-          style={{
-            backgroundImage: `url(${game.image || null})`,
-          }}
-        />
-        <div className='gameHeading'>
-          <h1 className='gameHeadingTitle'>{game.title}</h1>
+    <div id='gamePage'>
+      <header>
+        <div className='imageContainer' style={{ backgroundImage: `url(${noImage})` }}>
+          {game.image && (
+            <img
+              src={game.image || noImage}
+              alt={game.title}
+            />
+          )}
+        </div>
+        <div className='content'>
+          <h1 className='title'>{game.title}</h1>
           <div className='averageRating'>
-            {[...Array(5)].map((star, i) => (
-              <span
-                key={i}
-                className={i < getAvgReview() ? `star starNum${getAvgReview()}` : 'star'}
-              >
-                <FontAwesomeIcon icon='fa-solid fa-star' />
-              </span>
-            ))}
+            <StarRating rating={getAvgReview()} />
             <span className='numOfReviews'>
               {reviews.length}
               {' '}
               {reviews.length === 1 ? 'Review' : 'Reviews'}
             </span>
           </div>
-          <div className='gameSubHeading'>
-            <h2 className='gameOwner'>
+          <div>
+            <span className='owner'>
               Created by:
               {' '}
               {game.owner.username}
-            </h2>
+            </span>
             {sessionUser?.id === game.ownerId && (
-              <div className='gameButtonContainer'>
-                <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
-                  Edit
-                </Link>
-                <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
-                  Delete
-                </button>
-              </div>
+            <>
+              <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
+                Edit
+              </Link>
+              <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
+                Delete
+              </button>
+            </>
             )}
           </div>
-          <Link className='btn btnRed' to={`/games/${gameId}/reviews/add`}>
-            Add A Review
-          </Link>
         </div>
-      </div>
-      <div className='gameDetails'>
-        <h2 className='about'>
-          About the game:
-          {' '}
-          <p>{game.description}</p>
-        </h2>
-        {(game.url || game.downloadLink || game.releaseDate) && (
-          <div className='details'>
+      </header>
+      <main>
+        <div className='content'>
+          {(game.url || game.downloadLink || game.releaseDate) && (
+          <aside className='details'>
             {game.url && (
-              <div>
-                <a href={game.url}>Game homepage</a>
-              </div>
+            <div>
+              <a href={game.url}>Game homepage</a>
+            </div>
             )}
             {game.downloadLink && (
-              <div>
-                <a href={game.downloadLink}>Download Link</a>
-              </div>
+            <div>
+              <a href={game.downloadLink}>Download Link</a>
+            </div>
             )}
             {game.releaseDate && (
-              <div>
-                <p>
-                  Release date:
-                  {' '}
-                  {game.releaseDate}
-                </p>
-              </div>
+            <div>
+              <p>
+                Release date:
+                {' '}
+                {game.releaseDate}
+              </p>
+            </div>
             )}
-          </div>
-        )}
-        <Reviews reviews={reviews} sessionUser={sessionUser} />
-      </div>
+          </aside>
+          )}
+          <section className='options'>
+            <Link className='btn btnRed' to={`/games/${gameId}/reviews/add`}>
+              Add A Review
+            </Link>
+          </section>
+          <section className='about'>
+            <h2>About the game:</h2>
+            <p>{game.description}</p>
+          </section>
+          <section className='reviews'>
+            <h2>Reviews:</h2>
+            {reviews.length
+              ? (
+                <>
+                  {reviews.map(review => (
+                    <Review review={review} sessionUser={sessionUser} />
+                  ))}
+                </>
+              )
+              : <p>No Reviews</p>}
+          </section>
+        </div>
+      </main>
     </div>
   );
 };
