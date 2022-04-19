@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addGame, editGame } from '../../store/games';
+import './forms.scss';
 
 const GameForm = ({ sessionUser, currentGame, edit }) => {
   const dispatch = useDispatch();
@@ -49,35 +50,74 @@ const GameForm = ({ sessionUser, currentGame, edit }) => {
 
   return (
     <form className='gameForm' onSubmit={handleSubmit}>
-      <label>
-        Title *
-        <input type='text' value={title} onChange={e => setTitle(e.target.value)} />
-        <p className='error'>{errors.title}</p>
-      </label>
-      <label>
-        Description *
-        <textarea value={description} onChange={e => setDescription(e.target.value)} />
-        <p className='error'>{errors.description}</p>
-      </label>
-      <label>
-        Image
-        <input type='text' value={image} onChange={e => setImage(e.target.value)} />
-      </label>
-      <label>
-        URL
-        <input type='text' value={url} onChange={e => setUrl(e.target.value)} />
-      </label>
-      <label>
-        Download Link
-        <input type='text' value={downloadLink} onChange={e => setdownloadLink(e.target.value)} />
-      </label>
-      <label>
-        Release Date
-        <input type='date' value={releaseDate} onChange={e => setReleaseDate(e.target.value)} />
-      </label>
-      <button type='submit' className='btn btnRed'>
-        {edit ? 'Edit Game' : 'Add Game'}
-      </button>
+      <main>
+        <div className='input title'>
+          <label htmlFor='title'>Title</label>
+          <input
+            id='title'
+            type='text'
+            value={title}
+            placeholder='Title'
+            onChange={e => setTitle(e.target.value)}
+          />
+          <p className='error'>{errors.title}</p>
+        </div>
+        <div className='input description'>
+          <label htmlFor='description'>Description</label>
+          <textarea
+            id='description'
+            value={description}
+            placeholder='Cool awesome description...'
+            onChange={e => setDescription(e.target.value)}
+          />
+          <p className='error'>{errors.description}</p>
+        </div>
+        <div className='input imageUrl'>
+          <label htmlFor='imageUrl'>Image Url</label>
+          <input
+            id='imageUrl'
+            type='text'
+            value={image}
+            placeholder='https://www.image.com/image.png'
+            onChange={e => setImage(e.target.value)}
+          />
+        </div>
+        <div className='input homePage'>
+          <label htmlFor='homePage'>Website Address</label>
+          <input
+            id='homePage'
+            type='text'
+            value={url}
+            placeholder='https://www.gamehomepage.com/'
+            onChange={e => setUrl(e.target.value)}
+          />
+        </div>
+        <div className='input download'>
+          <label htmlFor='download'>Download Link </label>
+          <input
+            id='download'
+            type='text'
+            value={downloadLink}
+            placeholder='https://www.gamehomepage.com/download'
+            onChange={e => setdownloadLink(e.target.value)}
+          />
+
+        </div>
+        <div className='input date'>
+          <label htmlFor='date'>Release Date</label>
+          <input
+            id='date'
+            type='date'
+            value={releaseDate}
+            onChange={e => setReleaseDate(e.target.value)}
+          />
+        </div>
+      </main>
+      <footer>
+        <button type='submit' className='btn btnRed'>
+          {edit ? 'Edit Game' : 'Add Game'}
+        </button>
+      </footer>
     </form>
   );
 };

@@ -1,0 +1,15 @@
+.gameFormPage {
+  .content {
+    width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .formContainer {
+    width: 300px;
+
+    .formHeading {
+      color: var(--color-base);
+      margin: 0 0 32px;
+    }
+  }
+}

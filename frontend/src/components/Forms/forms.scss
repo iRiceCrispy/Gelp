@@ -32,7 +32,15 @@ form {
   }
 
   textarea {
-    height: 150px;
+    height: 75px;
+    resize: none;
+  }
+
+  label {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .error {
