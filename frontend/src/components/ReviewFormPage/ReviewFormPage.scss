@@ -1,9 +1,45 @@
-form {
-  .starRating {
-    margin-left: 15px;
+.reviewFormPage {
+  .content {
+    margin: 0 auto;
+    padding: 16px;
+    width: 960px;
   }
 
-  .starRating .star:hover {
-    cursor: pointer;
+  .formContainer {
+    width: 625px;
+  }
+}
+
+.reviewForm {
+  main {
+    height: 320px;
+    padding: 24px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    gap: 24px;
+
+    &:focus-within {
+      border: 1px solid rgb(0, 115, 187);
+      box-shadow: 0 0 4px rgb(0 115 187 / 30%);
+    }
+  }
+
+  .star {
+    font-size: 18px;
+  }
+
+  .input.body {
+    height: 100%;
+  }
+
+  textarea {
+    border: none;
+    padding: 0;
+    height: 100%;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
   }
 }

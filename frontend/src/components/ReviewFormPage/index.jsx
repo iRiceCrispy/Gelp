@@ -6,27 +6,31 @@ import './ReviewFormPage.scss';
 
 const ReviewFormPage = ({ edit }) => {
   const sessionUser = useSelector(state => state.session.user);
-  const gameId = parseInt(useParams().gameId);
   const reviewId = parseInt(useParams().reviewId);
-  const currentGame = useSelector(state => state.games[gameId]);
   const currentReview = useSelector(state => state.reviews[reviewId]);
+  const gameId = parseInt(useParams().gameId) || currentReview.gameId;
+  const currentGame = useSelector(state => state.games[gameId]);
 
   if (!sessionUser) return <Redirect to='/login' />;
   if ((!edit && !currentGame) || (edit && !currentReview)) return <Redirect to='/404' />;
 
   return (
-    <div className='formContainer'>
-      <p className='formTitle'>
-        {edit
-          ? `Edit Reivew for ${currentGame?.title || currentReview.game.title}`
-          : `Add Review for ${currentGame?.title || currentReview.game.title}`}
-      </p>
-      <ReviewForm
-        sessionUser={sessionUser}
-        gameId={gameId}
-        currentReview={currentReview || {}}
-        edit={edit}
-      />
+    <div className='reviewFormPage'>
+      <div className='content'>
+        <div className='formContainer'>
+          <h2 className='formHeading'>
+            {edit
+              ? `Edit Reivew for ${currentGame.title}`
+              : `Add Review for ${currentGame.title}`}
+          </h2>
+          <ReviewForm
+            sessionUser={sessionUser}
+            currentGame={currentGame}
+            currentReview={currentReview || {}}
+            edit={edit}
+          />
+        </div>
+      </div>
     </div>
   );
 };

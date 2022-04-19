@@ -1,13 +1,25 @@
 .starRating {
   font-size: 14px;
   display: flex;
+  align-items: center;
   gap: 0.2em;
 
   .star {
     color: white;
     background-color: gray;
-    border-radius: 4px;
+    border-radius: 0.25em;
     padding: 0.25em;
+  }
+
+  &.rate {
+    .star {
+      cursor: pointer;
+    }
+
+    .description {
+      margin: 0;
+      margin-left: 6px;
+    }
   }
 
   .starNum1 {

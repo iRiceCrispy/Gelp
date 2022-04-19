@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addReview, editReview } from '../../store/revews';
+import StarRating from '../StarRating';
+import './forms.scss';
 
-const ReviewForm = ({ sessionUser, gameId, currentReview, edit }) => {
+const ReviewForm = ({ sessionUser, currentGame, currentReview, edit }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [body, setBody] = useState(currentReview.body || '');
   const [rating, setRating] = useState(currentReview.rating || 0);
-  const [hover, setHover] = useState(rating);
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async e => {
@@ -19,13 +19,13 @@ const ReviewForm = ({ sessionUser, gameId, currentReview, edit }) => {
     if (!edit) {
       const review = {
         userId: sessionUser.id,
-        gameId,
+        gameId: currentGame.id,
         body,
         rating,
       };
 
       return dispatch(addReview(review))
-        .then(() => history.push(`/games/${gameId}`))
+        .then(() => history.push(`/games/${currentGame.id}`))
         .catch(async res => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -43,27 +43,25 @@ const ReviewForm = ({ sessionUser, gameId, currentReview, edit }) => {
 
   return (
     <form className='reviewForm' onSubmit={handleSubmit}>
-      <div className='starRating'>
-        {[...Array(5)].map((star, i) => (
-          <span
-            key={i}
-            className={i < (hover || rating) ? `star starNum${hover}` : 'star'}
-            onClick={() => setRating(i + 1)}
-            onMouseEnter={() => setHover(i + 1)}
-            onMouseLeave={() => setHover(rating)}
-          >
-            <FontAwesomeIcon icon='fa-solid fa-star' />
-          </span>
-        ))}
-        <p className='error'>{errors.rating}</p>
-      </div>
-      <label>
-        <textarea value={body} onChange={e => setBody(e.target.value)} />
-        <p className='error'>{errors.body}</p>
-      </label>
-      <button type='submit' className='btn btnRed'>
-        {edit ? 'Edit Review' : 'Add Review'}
-      </button>
+      <main>
+        <div className='input rating'>
+          <StarRating rating={rating} setRating={setRating} type='rate' />
+          <p className='error'>{errors.rating}</p>
+        </div>
+        <div className='input body'>
+          <textarea
+            value={body}
+            placeholder={`${currentGame.title} is an awesome game!!!`}
+            onChange={e => setBody(e.target.value)}
+          />
+          <p className='error'>{errors.body}</p>
+        </div>
+      </main>
+      <footer>
+        <button type='submit' className='btn btnRed'>
+          {edit ? 'Update Review' : 'Post Review'}
+        </button>
+      </footer>
     </form>
   );
 };
