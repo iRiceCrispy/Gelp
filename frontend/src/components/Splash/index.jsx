@@ -12,28 +12,36 @@ const Splash = () => {
   return (
     <div id='home'>
       <header>
-        <div className='content'>
+        <nav id='splash'>
+          <div className='options'>
+            <Link
+              className='navOption btn transparent bold'
+              to='/games/add'
+            >
+              Add Game
+            </Link>
+          </div>
           <div className='userAuth'>
             {sessionUser ? (
               <ProfileButton />
             ) : (
               <>
-                <Link className='login btn transparent' to='/login'>
+                <Link className='navOption login btn transparent bold' to='/login'>
                   Log In
                 </Link>
-                <Link className='signup btn border' to='/signup'>
+                <Link className='navOption signup btn border bold' to='/signup'>
                   Sign Up
                 </Link>
               </>
             )}
           </div>
+        </nav>
+        <div className='content'>
           <a className='home' href='/'>
             <span>Gelp</span>
             <img src='/favicon.ico' alt='' />
           </a>
-          <div className='searchbar'>
-            <SearchBar />
-          </div>
+          <SearchBar />
         </div>
       </header>
       <main>

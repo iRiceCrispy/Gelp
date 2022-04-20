@@ -2,48 +2,58 @@
   header {
     width: 100%;
     height: 600px;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      url(https://thenerdstash.com/wp-content/uploads/2015/10/Project-Zomboid.png);
     background-size: cover;
-    background-image: url(https://thenerdstash.com/wp-content/uploads/2015/10/Project-Zomboid.png);
     padding-top: 36px;
 
-    .content {
+    .content,
+    nav#splash {
       margin: 0 auto;
-      min-width: fit-content;
+      min-width: 650px;
+    }
+
+    nav#splash {
       width: 50%;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .navOption {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .profileButton {
+        color: var(--color-text2);
+      }
+
+      .signup {
+        margin-left: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    .content {
+      width: 40%;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
 
-    .userAuth {
-      width: 100%;
-      color: white;
-      font-weight: bold;
-      text-align: end;
-
-      .btn {
-        font-size: 14px;
+      .home {
+        margin-top: 84px;
+        margin-bottom: 48px;
+        color: var(--color-text2);
+        font-size: 48px;
+        font-weight: bold;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
       }
-
-      .login {
-        margin-right: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-    }
-
-    .home {
-      margin-top: 84px;
-      margin-bottom: 48px;
-      width: fit-content;
-      color: white;
-      font-size: 48px;
-      font-weight: bold;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
     }
   }
 

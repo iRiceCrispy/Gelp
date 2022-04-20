@@ -8,7 +8,7 @@ const Navigation = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <nav>
+    <nav id='main'>
       <div className='navBar'>
         <div className='home'>
           <Link className='logo' to='/'>
