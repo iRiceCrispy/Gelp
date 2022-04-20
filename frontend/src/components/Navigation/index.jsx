@@ -12,15 +12,13 @@ const Navigation = () => {
       <div className='navBar'>
         <div className='home'>
           <Link className='logo' to='/'>
-            <p>Gelp</p>
+            <span>Gelp</span>
             <img src='/favicon.ico' alt='' />
           </Link>
         </div>
-        <div className='searchbar'>
-          <SearchBar />
-        </div>
+        <SearchBar />
         <div className='options'>
-          <Link className='navText' to='/games/add'>
+          <Link className='navOption btn transparent' to='/games/add'>
             Add Game
           </Link>
         </div>
@@ -28,18 +26,15 @@ const Navigation = () => {
           {sessionUser ? (
             <ProfileButton />
           ) : (
-            <ul>
-              <li>
-                <Link className='navText login' to='/login'>
-                  Log In
-                </Link>
-              </li>
-              <li>
-                <Link className='navText logout btn' to='/signup'>
-                  Sign Up
-                </Link>
-              </li>
-            </ul>
+            <>
+              <Link className='login btn border' to='/login'>
+                Log In
+              </Link>
+
+              <Link className='signup btn' to='/signup'>
+                Sign Up
+              </Link>
+            </>
           )}
         </div>
       </div>

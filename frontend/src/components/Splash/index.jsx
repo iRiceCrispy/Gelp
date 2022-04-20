@@ -15,7 +15,7 @@ const Splash = () => {
         <nav id='splash'>
           <div className='options'>
             <Link
-              className='navOption btn transparent bold'
+              className='navOption btn underline bold'
               to='/games/add'
             >
               Add Game
@@ -26,7 +26,7 @@ const Splash = () => {
               <ProfileButton />
             ) : (
               <>
-                <Link className='navOption login btn transparent bold' to='/login'>
+                <Link className='navOption login btn underline bold' to='/login'>
                   Log In
                 </Link>
                 <Link className='navOption signup btn border bold' to='/signup'>

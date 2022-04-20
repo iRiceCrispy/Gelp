@@ -1,50 +1,62 @@
 nav#main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 84px;
+  width: 100%;
   border-bottom: 1px solid #ebebeb;
 
   .navBar {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    padding: 24px 40px;
+    display: grid;
+    grid-template-columns: 4fr max-content 3fr 1fr;
+    grid-column-gap: 12px;
     align-items: center;
-    width: 90%;
 
-    .navText {
+    .navOption {
       color: black;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
-      text-shadow: 0 0 2px gray;
+      padding: 8px;
     }
 
     .home {
-      vertical-align: middle;
+      grid-area: 1 / 1 / 2 / 2;
+      justify-self: start;
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: none;
+      }
+
+      .logo span {
+        color: #d32323;
+        font-size: 26px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
     }
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-shadow: none;
+    .searchbarContainer {
+      grid-area: 1 / 2 / 2 / 3;
     }
 
-    .logo p {
-      color: #d32323;
-      font-size: 26px;
+    .options {
+      grid-area: 1 / 3 / 2 / 4;
+      justify-self: flex-end;
+    }
+
+    .userAuth {
+      grid-area: 1 / 4 / 2 / 5;
+      min-width: 200px;
+      font-size: 16px;
       font-weight: bold;
-      margin-right: 10px;
-    }
+      justify-self: flex-end;
+      text-align: end;
 
-    .userAuth ul {
-      list-style-type: none;
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .login {
-      margin-right: 25px;
+      .login {
+        color: var(--color-text);
+        margin-right: 12px;
+      }
     }
   }
 }

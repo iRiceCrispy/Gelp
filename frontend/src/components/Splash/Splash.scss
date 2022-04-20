@@ -33,6 +33,13 @@
         margin-left: 12px;
         padding-left: 24px;
         padding-right: 24px;
+        border: 2px solid;
+
+        &:hover {
+          color: var(--color-text3);
+          background-color: var(--color-text2);
+          border: 2px solid var(--color-text2);
+        }
       }
     }
 
