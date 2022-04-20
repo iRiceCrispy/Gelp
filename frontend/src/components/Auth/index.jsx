@@ -13,32 +13,40 @@ const Auth = ({ type }) => {
 
   return (
     <div className={`auth ${type}`}>
-      <div className='left'>
-        <div className='formContainer'>
-          <h2 className='formHeading'>
-            {type === 'login' ? 'Log in to Gelp' : 'Sign up for Gelp'}
-          </h2>
-          {type === 'login' ? <LoginForm /> : <SignupForm />}
-          <div className='redirect'>
-            {type === 'login' ? (
-              <div>
-                New to Gelp?
-                {' '}
-                <Link to='/signup'>Sign Up</Link>
-              </div>
-            ) : (
-              <div>
-                Already on Gelp?
-                {' '}
-                <Link to='/login'>Log In</Link>
-              </div>
-            )}
+      <header>
+        <Link className='logo' to='/'>
+          <span>Gelp</span>
+          <img src='/favicon.ico' alt='' />
+        </Link>
+      </header>
+      <div className='content'>
+        <div className='left'>
+          <div className='formContainer'>
+            <h2 className='formHeading'>
+              {type === 'login' ? 'Log in to Gelp' : 'Sign up for Gelp'}
+            </h2>
+            {type === 'login' ? <LoginForm /> : <SignupForm />}
+            <div className='redirect'>
+              {type === 'login' ? (
+                <div>
+                  New to Gelp?
+                  {' '}
+                  <Link to='/signup'>Sign Up</Link>
+                </div>
+              ) : (
+                <div>
+                  Already on Gelp?
+                  {' '}
+                  <Link to='/login'>Log In</Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className='right'>
-        <div className='imageContainer'>
-          <img src={gamer} alt='gamer' />
+        <div className='right'>
+          <div className='imageContainer'>
+            <img src={gamer} alt='gamer' />
+          </div>
         </div>
       </div>
     </div>

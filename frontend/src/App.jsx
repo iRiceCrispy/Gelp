@@ -47,15 +47,15 @@ const App = () => {
           <Route exact path='/'>
             <Splash />
           </Route>
+          <Route exact path='/login'>
+            <Auth type='login' />
+          </Route>
+          <Route exact path='/signup'>
+            <Auth type='signup' />
+          </Route>
           <ScrollToTop>
             <NavWrapper>
               <Switch>
-                <Route exact path='/login'>
-                  <Auth type='login' />
-                </Route>
-                <Route exact path='/signup'>
-                  <Auth type='signup' />
-                </Route>
                 <Route exact path='/search'>
                   <SearchResults />
                 </Route>
