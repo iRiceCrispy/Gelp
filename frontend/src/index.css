@@ -1,8 +1,9 @@
 :root {
   --color-base: #d32323;
-  --color-text: white;
-  --color-text2: #666;
-  --color-text3: #0073bb;
+  --color-text: black;
+  --color-text2: white;
+  --color-text3: #666;
+  --color-text4: #0073bb;
   --color-border: #e6e6e6;
   --color-star-1: #f27e00;
   --color-star-2: #fbc418;
@@ -29,34 +30,54 @@ a {
 
 .btn {
   cursor: pointer;
+  font-size: 16px;
+  color: var(--color-text2);
+  background-color: var(--color-base);
   text-decoration: none;
-  font-size: 15px;
+  text-align: center;
+  padding: 8px 16px;
+  border: 2px solid transparent;
   border-radius: 4px;
-  padding: 8px 10.4px;
-  color: black;
-  background-color: transparent;
   box-shadow: none;
-  border: 1px solid gray;
+}
+
+.btn.small {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.btn.bold {
+  font-weight: bold;
+}
+
+.btn.translucent {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn.transparent {
+  background: transparent;
+  border-radius: 0;
+}
+
+.btn.border {
+  background: transparent;
+  border: 2px solid;
 }
 
 .btn:hover {
-  opacity: 0.75;
+  filter: brightness(1.1);
 }
 
-.btnLight {
-  background-color: white;
-  border: none;
+.btn.translucent:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.btnRed {
-  color: white;
-  background-color: var(--color-base);
-  border: none;
+.btn.transparent:hover {
+  border-bottom: 2px solid;
 }
 
-.btnTrans {
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  text-shadow: 0 0 1px black;
+.btn.border:hover {
+  color: var(--color-text3);
+  background-color: var(--color-text2);
+  border: 2px solid var(--color-text2);
 }

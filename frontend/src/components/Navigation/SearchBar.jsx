@@ -59,7 +59,7 @@ const SearchBar = () => {
             </div>
           )}
         </div>
-        <button className='searchButton' type='submit'>
+        <button className='btn search' type='submit'>
           <FontAwesomeIcon icon='fa-solid fa-magnifying-glass' />
         </button>
       </form>

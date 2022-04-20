@@ -58,7 +58,7 @@ const ReviewForm = ({ sessionUser, currentGame, currentReview, edit }) => {
         </div>
       </main>
       <footer>
-        <button type='submit' className='btn btnRed'>
+        <button type='submit' className='btn'>
           {edit ? 'Update Review' : 'Post Review'}
         </button>
       </footer>

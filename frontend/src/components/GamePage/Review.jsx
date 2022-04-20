@@ -25,10 +25,10 @@ const Reviews = ({ review, sessionUser }) => {
       <p className='body'>{review.body}</p>
       {sessionUser?.id === review.userId && (
         <div className='buttons'>
-          <Link className='btn' to={`/reviews/${review.id}/edit`}>
+          <Link className='btn transparent small' to={`/reviews/${review.id}/edit`}>
             Edit
           </Link>
-          <button className='btn' type='button' onClick={() => deleteReviewEvent(review.id)}>
+          <button className='btn transparent small' type='button' onClick={() => deleteReviewEvent(review.id)}>
             Delete
           </button>
         </div>

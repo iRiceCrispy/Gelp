@@ -45,13 +45,13 @@ const LoginForm = () => {
         </div>
       </main>
       <footer>
-        <button type='submit' className='btn btnRed'>
+        <button type='submit' className='btn bold'>
           Login
         </button>
         <fieldset className='orLine'>
           <legend align='center'>OR</legend>
         </fieldset>
-        <button type='button' className='btn btnRed' onClick={() => dispatch(demoLogin())}>
+        <button type='button' className='btn bold' onClick={() => dispatch(demoLogin())}>
           Login as Demo
         </button>
       </footer>

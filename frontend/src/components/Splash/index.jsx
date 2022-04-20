@@ -18,10 +18,10 @@ const Splash = () => {
               <ProfileButton />
             ) : (
               <>
-                <Link className='login' to='/login'>
+                <Link className='login btn transparent' to='/login'>
                   Log In
                 </Link>
-                <Link className='logout btn btnRed' to='/signup'>
+                <Link className='signup btn border' to='/signup'>
                   Sign Up
                 </Link>
               </>

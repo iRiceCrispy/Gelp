@@ -35,7 +35,7 @@ const Navigation = () => {
                 </Link>
               </li>
               <li>
-                <Link className='navText logout btn btnRed' to='/signup'>
+                <Link className='navText logout btn' to='/signup'>
                   Sign Up
                 </Link>
               </li>

@@ -21,5 +21,9 @@
     margin-top: 25px;
     display: flex;
     gap: 12px;
+
+    .btn {
+      color: var(--color-text);
+    }
   }
 }

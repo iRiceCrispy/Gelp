@@ -60,10 +60,10 @@ const GamePage = () => {
             </span>
             {sessionUser?.id === game.ownerId && (
             <>
-              <Link className='btn btnTrans' to={`/games/${gameId}/edit`}>
+              <Link className='btn translucent small bold' to={`/games/${gameId}/edit`}>
                 Edit
               </Link>
-              <button className='btn btnTrans' type='button' onClick={() => deleteGameEvent()}>
+              <button className='btn translucent small bold' type='button' onClick={() => deleteGameEvent()}>
                 Delete
               </button>
             </>
@@ -97,7 +97,7 @@ const GamePage = () => {
           </aside>
           )}
           <section className='options'>
-            <Link className='btn btnRed' to={`/games/${gameId}/reviews/add`}>
+            <Link className='btn' to={`/games/${gameId}/reviews/add`}>
               Add A Review
             </Link>
           </section>

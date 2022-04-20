@@ -114,8 +114,8 @@ const GameForm = ({ sessionUser, currentGame, edit }) => {
         </div>
       </main>
       <footer>
-        <button type='submit' className='btn btnRed'>
-          {edit ? 'Edit Game' : 'Add Game'}
+        <button type='submit' className='btn'>
+          {edit ? 'Update Game' : 'Add Game'}
         </button>
       </footer>
     </form>

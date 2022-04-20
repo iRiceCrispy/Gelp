@@ -63,7 +63,7 @@ const SignupForm = () => {
         </div>
       </main>
       <footer>
-        <button type='submit' className='btn btnRed'>
+        <button type='submit' className='btn bold'>
           Sign Up
         </button>
       </footer>
