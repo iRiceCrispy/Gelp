@@ -7,10 +7,32 @@ const { Game, Review, User } = require('../../db/models');
 const router = express.Router();
 
 const validateGame = [
-  check('title').exists({ checkFalsy: true }).withMessage('Please provide a valid game title'),
+  check('title')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid game title'),
   check('description')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid game description'),
+  check('image')
+    .optional({ checkFalsy: true })
+    .isURL()
+    .withMessage('Please provid a valid URL')
+    .bail()
+    .custom(image => {
+      if (!image.length || image.endsWith('.jpg') || image.endsWith('.jpeg') || image.endsWith('.png')) {
+        return true;
+      }
+
+      throw new Error('Only images with extentions .png, .jpg, and .jpeg are accepted.');
+    }),
+  check('url')
+    .optional({ checkFalsy: true })
+    .isURL()
+    .withMessage('Please provid a valid URL'),
+  check('downloadLink')
+    .optional({ checkFalsy: true })
+    .isURL()
+    .withMessage('Please provid a valid URL'),
   handleValidationErrors,
 ];
 

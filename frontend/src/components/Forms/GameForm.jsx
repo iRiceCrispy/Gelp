@@ -81,6 +81,7 @@ const GameForm = ({ sessionUser, currentGame, edit }) => {
             placeholder='https://www.image.com/image.png'
             onChange={e => setImage(e.target.value)}
           />
+          <p className='error'>{errors.image}</p>
         </div>
         <div className='input homePage'>
           <label htmlFor='homePage'>Website Address</label>
@@ -91,6 +92,7 @@ const GameForm = ({ sessionUser, currentGame, edit }) => {
             placeholder='https://www.gamehomepage.com/'
             onChange={e => setUrl(e.target.value)}
           />
+          <p className='error'>{errors.url}</p>
         </div>
         <div className='input download'>
           <label htmlFor='download'>Download Link </label>
@@ -101,7 +103,7 @@ const GameForm = ({ sessionUser, currentGame, edit }) => {
             placeholder='https://www.gamehomepage.com/download'
             onChange={e => setdownloadLink(e.target.value)}
           />
-
+          <p className='error'>{errors.downloadLink}</p>
         </div>
         <div className='input date'>
           <label htmlFor='date'>Release Date</label>
