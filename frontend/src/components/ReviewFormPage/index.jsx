@@ -21,7 +21,7 @@ const ReviewFormPage = ({ edit }) => {
           <h2 className='formHeading'>
             {edit
               ? `Edit Reivew for ${currentGame.title}`
-              : `Add Review for ${currentGame.title}`}
+              : `Write a Review for ${currentGame.title}`}
           </h2>
           <ReviewForm
             sessionUser={sessionUser}

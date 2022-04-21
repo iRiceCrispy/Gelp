@@ -16,6 +16,7 @@
     nav#splash {
       width: 50%;
       height: 40px;
+      color: var(--color-text2);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -23,10 +24,6 @@
       .navOption {
         font-size: 14px;
         padding: 8px 12px;
-      }
-
-      .profileButton {
-        color: var(--color-text2);
       }
 
       .signup {
