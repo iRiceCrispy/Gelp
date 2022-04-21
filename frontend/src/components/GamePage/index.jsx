@@ -146,7 +146,9 @@ const GamePage = () => {
           </aside>
           <section className='options'>
             <Link className='btn' to={`/games/${gameId}/reviews/add`}>
-              Add A Review
+              <FontAwesomeIcon icon='fa-regular fa-star' />
+              {' '}
+              Write A Review
             </Link>
           </section>
           <section className='about'>

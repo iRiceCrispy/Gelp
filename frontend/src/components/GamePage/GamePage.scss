@@ -81,8 +81,8 @@
     align-items: center;
 
     .content {
-      max-width: 1144px;
-      margin: 24px 40px 48px;
+      width: calc(min(1144px, 100%));
+      padding: 24px 40px 48px;
       display: grid;
       grid-template-columns: auto max-content;
       grid-template-areas:
@@ -90,78 +90,83 @@
         'about details'
         'reviews details';
       gap: 32px;
-    }
 
-    .details {
-      grid-area: details;
-      width: 365px;
-      height: max-content;
-      padding: 0 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid var(--color-border);
-      border-radius: 5px;
-      position: sticky;
-      top: 24px;
+      h2 {
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
 
-      .item {
-        width: 100%;
-        padding: 16px 0;
+      .details {
+        grid-area: details;
+        width: 365px;
+        height: max-content;
+        padding: 0 16px;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        border-bottom: 1px solid var(--color-border);
+        border: 1px solid var(--color-border);
+        border-radius: 5px;
+        position: sticky;
+        top: 24px;
 
-        &:last-child {
-          border-bottom: none;
-        }
+        .item {
+          width: 100%;
+          padding: 16px 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--color-border);
 
-        .text {
-          font-size: 16px;
-          font-weight: bold;
-          max-width: 275px;
-          overflow: hidden;
-          white-space: nowrap;
+          &:last-child {
+            border-bottom: none;
+          }
 
-          a {
-            color: var(--color-text4);
+          .text {
+            font-size: 16px;
+            font-weight: bold;
+            max-width: 275px;
+            overflow: hidden;
+            white-space: nowrap;
 
-            &:hover {
-              text-decoration: underline;
+            a {
+              color: var(--color-text4);
+
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
+
+          .icon {
+            font-size: 24px;
+          }
         }
+      }
 
-        .icon {
-          font-size: 24px;
+      .options {
+        grid-area: options;
+        display: flex;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--color-border);
+
+        .btn {
+          margin: 0;
         }
       }
-    }
 
-    .options {
-      grid-area: options;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--color-border);
+      .about {
+        grid-area: about;
 
-      .btn {
-        margin: 0;
+        p {
+          font-size: 16px;
+          font-weight: normal;
+          word-break: break-word;
+        }
       }
-    }
 
-    .about {
-      grid-area: about;
-
-      p {
-        font-size: 20px;
-        font-weight: normal;
-        margin-top: 10px;
-        word-break: break-word;
+      .reviews {
+        grid-area: reviews;
       }
-    }
-
-    .reviews {
-      grid-area: reviews;
     }
   }
 }

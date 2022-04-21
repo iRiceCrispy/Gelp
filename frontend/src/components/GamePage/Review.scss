@@ -1,29 +1,55 @@
 .review {
-  padding: 16px;
-  padding-left: 0;
-  width: 100%;
+  margin-bottom: 40px;
+  position: relative;
 
   .user {
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
-  .rating {
-    font-weight: 550;
+  .star {
+    font-size: 12px;
   }
 
   .body {
-    margin-top: 25px;
+    margin-top: 16px;
     word-break: break-word;
   }
 
-  .buttons {
-    margin-top: 25px;
+  .ellipsis {
     display: flex;
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
 
-    .btn {
-      color: var(--color-text);
+    .button {
+      height: fit-content;
+      border-radius: 50%;
+      padding: 12px 14px;
+    }
+
+    .menu {
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
+
+      .menuItem {
+        font-size: 14px;
+        font-weight: bold;
+        width: 160px;
+        padding: 12px 8px;
+        color: var(--color-text);
+        text-align: start;
+      }
     }
   }
 }
