@@ -12,6 +12,7 @@ import GameFormPage from './components/GameFormPage';
 import GamePage from './components/GamePage';
 import ReviewFormPage from './components/ReviewFormPage';
 import NotFound from './components/404';
+import About from './components/About';
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -27,6 +28,13 @@ const NavWrapper = ({ children }) => (
   <>
     <Navigation />
     {children}
+  </>
+);
+
+const AboutWrapper = ({ children }) => (
+  <>
+    {children}
+    <About />
   </>
 );
 
@@ -48,22 +56,30 @@ const App = () => {
             <Splash />
           </Route>
           <Route exact path='/login'>
-            <Auth type='login' />
+            <AboutWrapper>
+              <Auth type='login' />
+            </AboutWrapper>
           </Route>
           <Route exact path='/signup'>
-            <Auth type='signup' />
+            <AboutWrapper>
+              <Auth type='signup' />
+            </AboutWrapper>
           </Route>
           <ScrollToTop>
             <NavWrapper>
               <Switch>
                 <Route exact path='/search'>
-                  <SearchResults />
+                  <AboutWrapper>
+                    <SearchResults />
+                  </AboutWrapper>
                 </Route>
                 <Route exact path='/games/add'>
                   <GameFormPage edit={false} />
                 </Route>
                 <Route exact path={'/games/:gameId(\\d+)'}>
-                  <GamePage />
+                  <AboutWrapper>
+                    <GamePage />
+                  </AboutWrapper>
                 </Route>
                 <Route exact path={'/games/:gameId(\\d+)/edit'}>
                   <GameFormPage edit />
@@ -75,7 +91,9 @@ const App = () => {
                   <ReviewFormPage edit />
                 </Route>
                 <Route exact path='/404'>
-                  <NotFound />
+                  <AboutWrapper>
+                    <NotFound />
+                  </AboutWrapper>
                 </Route>
                 <Route>
                   <Redirect to='/404' />

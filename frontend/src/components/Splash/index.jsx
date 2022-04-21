@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import SearchBar from '../Navigation/SearchBar';
 import ProfileButton from '../Navigation/Profile';
 import GameList from './GameList';
+import About from '../About';
 import './Splash.scss';
 
 const Splash = () => {
@@ -48,6 +49,7 @@ const Splash = () => {
         <h2>Find the Best Games Online</h2>
         <GameList />
       </main>
+      <About />
     </div>
   );
 };
