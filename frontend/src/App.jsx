@@ -43,9 +43,13 @@ const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(loadGames());
-    dispatch(loadReviews());
-    dispatch(restoreUser()).then(() => setIsLoaded(true));
+    (async () => {
+      await dispatch(restoreUser());
+      await dispatch(loadGames());
+      await dispatch(loadReviews());
+
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
 
   return (
