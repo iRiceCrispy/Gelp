@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SearchBar from '../Navigation/SearchBar';
-import ProfileButton from '../Navigation/ProfileButton';
+import ProfileButton from '../Navigation/Profile';
 import GameList from './GameList';
 import './Splash.scss';
 

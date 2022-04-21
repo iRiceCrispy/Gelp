@@ -1,7 +1,7 @@
 import React, { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SearchBar from './SearchBar';
-import ProfileButton from './ProfileButton';
+import ProfileButton from './Profile';
 import './Navigation.scss';
 
 const Navigation = () => {
