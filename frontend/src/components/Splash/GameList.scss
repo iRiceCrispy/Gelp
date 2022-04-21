@@ -1,11 +1,12 @@
 .gameList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 45px;
 
   .gameCard {
     text-decoration: none;
-    border: 1px solid lightgray;
+    border: 1px solid var(--color-border);
     border-radius: 4px;
 
     img {

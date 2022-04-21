@@ -15,28 +15,30 @@ const SearchResults = () => {
   };
 
   return (
-    <div className='searchResults'>
-      {results.length
-        ? results.map((result, i) => (
-          <div className='resultCard' key={result.id} onClick={() => redirect(result.id)}>
-            <div className='photo'>
-              <img src={result.image || noImage} alt={result.title} />
-            </div>
-            <div className='details'>
-              <p className='title'>
-                {i + 1}
-                {'. '}
-                {result.title}
-              </p>
-              <div className='rating'>
-                <StarRating rating={result.rating} />
-                <span>{result.totalOfReviews}</span>
+    <div id='search'>
+      <div className='results'>
+        {results.length
+          ? results.map((result, i) => (
+            <div className='resultCard' key={result.id} onClick={() => redirect(result.id)}>
+              <div className='photo'>
+                <img src={result.image || noImage} alt={result.title} />
               </div>
-              <p>{result.description}</p>
+              <div className='details'>
+                <p className='title'>
+                  {i + 1}
+                  {'. '}
+                  {result.title}
+                </p>
+                <div className='rating'>
+                  <StarRating rating={result.rating} />
+                  <span>{result.totalOfReviews}</span>
+                </div>
+                <p className='description'>{result.description}</p>
+              </div>
             </div>
-          </div>
-        ))
-        : <div>No games found.</div>}
+          ))
+          : <div>No games found.</div>}
+      </div>
     </div>
   );
 };

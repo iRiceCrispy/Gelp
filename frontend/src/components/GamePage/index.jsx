@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteGame } from '../../store/games';
 import StarRating from '../StarRating';
 import Review from './Review';
@@ -73,29 +74,76 @@ const GamePage = () => {
       </header>
       <main>
         <div className='content'>
-          {(game.url || game.downloadLink || game.releaseDate) && (
           <aside className='details'>
-            {game.url && (
-            <div>
-              <a href={game.url}>Game homepage</a>
-            </div>
-            )}
-            {game.downloadLink && (
-            <div>
-              <a href={game.downloadLink}>Download Link</a>
-            </div>
-            )}
-            {game.releaseDate && (
-            <div>
-              <p>
-                Release date:
-                {' '}
-                {game.releaseDate}
-              </p>
-            </div>
-            )}
+            {(game.url || game.downloadLink || game.releaseDate)
+              ? (
+                <>
+                  {game.url && (
+                  <div className='item link'>
+                    <span className='text'>
+                      <a href={game.url} target='_blank' rel='noreferrer'>{game.url}</a>
+                    </span>
+                    <span className='icon'>
+                      <a href={game.url} target='_blank' rel='noreferrer'>
+                        <FontAwesomeIcon icon='fa-solid fa-up-right-from-square' />
+                      </a>
+                    </span>
+                  </div>
+                  )}
+                  {game.downloadLink && (
+                  <div className='item link'>
+                    {game.downloadLink.includes('store.steampowered')
+                      ? (
+                        <>
+                          <span className='text'>
+                            <a href={game.downloadLink} target='_blank' rel='noreferrer'>Steam link</a>
+                          </span>
+                          <span className='icon'>
+                            <a href={game.downloadLink} target='_blank' rel='noreferrer'>
+                              <FontAwesomeIcon icon='fa-brands fa-steam' />
+                            </a>
+                          </span>
+                        </>
+                      )
+                      : (
+                        <>
+                          <span className='text'>
+                            <a href={game.downloadLink} target='_blank' rel='noreferrer'>Download link</a>
+                          </span>
+                          <span className='icon'>
+                            <a href={game.downloadLink} target='_blank' rel='noreferrer'>
+                              <FontAwesomeIcon icon='fa-solid fa-download' />
+                            </a>
+                          </span>
+                        </>
+                      )}
+                  </div>
+                  )}
+                  {game.releaseDate && (
+                  <div className='item'>
+                    <span className='text'>
+                      Release Date:
+                      {' '}
+                      {game.releaseDate}
+                    </span>
+                    <span className='icon'>
+                      <FontAwesomeIcon icon='fa-solid fa-calendar-days' />
+                    </span>
+                  </div>
+                  )}
+                </>
+              )
+              : (
+                <div className='item'>
+                  <span className='text'>No additional details</span>
+                  <span>
+                    <Link className='btn' to={`/games/${gameId}/edit`}>
+                      Add Details
+                    </Link>
+                  </span>
+                </div>
+              )}
           </aside>
-          )}
           <section className='options'>
             <Link className='btn' to={`/games/${gameId}/reviews/add`}>
               Add A Review
@@ -111,7 +159,7 @@ const GamePage = () => {
               ? (
                 <>
                   {reviews.map(review => (
-                    <Review review={review} sessionUser={sessionUser} />
+                    <Review key={review.id} review={review} sessionUser={sessionUser} />
                   ))}
                 </>
               )
