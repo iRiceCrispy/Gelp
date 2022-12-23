@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: gelp_database
+    image: postgres:12.9-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USERNAME:-gelp}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-password}
+      - POSTGRES_DB=${DB_DATABASE:-gelp_production}
+    ports:
+      - ${DB_PORT:-5432}:5432
+    networks:
+      - network
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+  app:
+    container_name: gelp_app
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_USERNAME=${DB_USERNAME:-gelp}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+      - DB_DATABASE=${DB_DATABASE:-gelp_production}
+      - DB_HOST=postgres
+      - JWT_SECRET=${JWT_SECRET:-supersecretcode}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-604800}
+    ports:
+      - '${APP_PORT:-8080}:8080'
+    networks:
+      - network
+    depends_on:
+      - postgres
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  postgres-db:
+    driver: local
