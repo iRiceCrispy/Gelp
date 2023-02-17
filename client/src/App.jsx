@@ -78,7 +78,7 @@ const App = () => {
                   </AboutWrapper>
                 </Route>
                 <Route exact path='/games/add'>
-                  <GameFormPage edit={false} />
+                  <GameFormPage key='create' />
                 </Route>
                 <Route exact path={'/games/:gameId(\\d+)'}>
                   <AboutWrapper>
@@ -86,13 +86,13 @@ const App = () => {
                   </AboutWrapper>
                 </Route>
                 <Route exact path={'/games/:gameId(\\d+)/edit'}>
-                  <GameFormPage edit />
+                  <GameFormPage key='edit' edit />
                 </Route>
                 <Route exact path={'/games/:gameId(\\d+)/reviews/add'}>
-                  <ReviewFormPage edit={false} />
+                  <ReviewFormPage key='create' />
                 </Route>
                 <Route exact path={'/reviews/:reviewId(\\d+)/edit'}>
-                  <ReviewFormPage edit />
+                  <ReviewFormPage key='edit' edit />
                 </Route>
                 <Route exact path='/404'>
                   <AboutWrapper>
