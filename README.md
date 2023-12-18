@@ -1,5 +1,5 @@
 # Gelp
-Gelp is a clone of [Yelp](https://www.yelp.com/) with a game theme.
+[Gelp](https://gelp.iricecrispy.dev) is a clone of [Yelp](https://www.yelp.com/) with a game theme.
 
 This app uses `express` and `postgresql` for its backend, and `react` and `redux` for its frontend.
 
@@ -9,7 +9,6 @@ Its current features are:
   3. Viewing, creating, editing, and deleting game reviews
  
 More info can be found in the [Wiki](../../wiki)\
-Hosted on Heroku: [Live Link](https://yelpforgames.herokuapp.com/)
 
 ## Steps to clone the app
 ### 1. Clone this repo in your project folder
